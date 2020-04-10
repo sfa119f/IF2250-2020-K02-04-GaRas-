@@ -1,29 +1,22 @@
-tuna netra :
-tongkat
-buku braille
-kacamata hitam
-kacamata givevision
-alat tulis tunanetra
-squzzle
+create table produk (id int auto_increment unique, nama varchar(50),harga int, stok int, spek varchar(300), kategori varchar(20),primary key (id));
 
+insert into produk values (null,"tongkat",30000,100,"tongkat untuk tuna netra","tuna netra");
+insert into produk values (null,"buku braille",200000,30,"buku braille untuk tuna netra","tuna netra");
+insert into produk values (null,"kacamata hitam",150000,50,"kacamata hitam untuk tuna netra","tuna netra");
+insert into produk values (null,"alat tulis tunanetra",10000,150,"kalat tulis tunanetra untuk tuna netra","tuna netra");
+insert into produk values (null,"squzzle",50000,10,"media belajar matematika","tuna netra");
 
-Tuna rungu :
-alat bantu dengar
-masker tuna rungu
+insert into produk values (null,"alat bantu dengar",70000,25,"alat bantu pendengaran","tuna rungu");
+insert into produk values (null,"masker tuna rungu",15000,80,"masker untuk tuna rungu","tuna rungu");
 
-Tuna wicara :
-buku bahasa isyarat
-translator 
+insert into produk values (null,"buku bahasa isyarat",35000,250,"buku untuk belajar bahasa isyarat","tuna wicara");
+insert into produk values (null,"translator",1000000,10,"alat penerjemah bahasa isyarat","tuna wicara");
 
-Tuna daksa:
-kursi roda
-Brace
-kaki palsu
-orthotic
-splint
-alat bantu jalan
+insert into produk values (null,"kursi roda",350000,60,"kursi roda untuk tuna daksa","tuna daksa");
+insert into produk values (null,"kaki palsu",75000,70,"alat bantu jalan","tuna daksa");
+insert into produk values (null,"orthotic",95000,45,"alat bantu untuk tuna daksa","tuna daksa");
+insert into produk values (null,"splint",105000,35,"alat bantu untuk tuna daksa","tuna daksa");
 
-Tuna grahita:
-alat peraga
+insert into produk values (null,"alat peraga",105000,35,"alat peraga untuk tuna grahita","tuna grahita");
 
 
