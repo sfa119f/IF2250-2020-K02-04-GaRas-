@@ -1,38 +1,30 @@
 from tkinter import *
 import DefVar
-import PageLogin
 
-def showProduct(Kategori):
+def showProduct(searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
     berandaframe.place(x=200, y=50, height=550, width=600)
 
-    if(Kategori == "All"):
-        #Contoh Kasus
-        A = ["A", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        B = ["B", "KategoriB", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        C = ["C", "KategoriC", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        D = ["D", "KategoriD", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        E = ["E", "KategoriE", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        F = ["F", "KategoriF", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        G = ["G", "KategoriG", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        H = ["H", "KategoriH", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        I = ["I", "KategoriI", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    #Contoh Data
+    A = ["A", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    B = ["B", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    C = ["C", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    D = ["D", "KategoriD", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    E = ["E", "KategoriE", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    F = ["F", "KategoriF", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    G = ["G", "KategoriG", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    H = ["H", "KategoriH", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    I = ["I", "KategoriI", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
 
-        List = [A,B,C,D,E,F,G,H,I]
-    else:
-        #Contoh Kasus
-        #Kategori == "KategoriA"
-        A = ["A", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        B = ["B", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        C = ["C", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        D = ["D", "KategoriD", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        E = ["E", "KategoriE", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        F = ["F", "KategoriF", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        G = ["G", "KategoriG", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        H = ["H", "KategoriH", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-        I = ["I", "KategoriI", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-
-        List = [A,B,C]
+    if(searchBy == "Search"):
+        if(Key == "All"):
+            List = [A,B,C,D,E,F,G,H,I]
+        else:
+            #Misal Key == "A"
+            List = [A]           
+    elif(searchBy == "Kategori"):
+        #Key == "KategoriA"
+        List = [A,B,C]  
         
     x_ = 0
     y_ = 0
