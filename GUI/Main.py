@@ -1,7 +1,7 @@
 from tkinter import *
 import DefVar
 from ModulPenjual import PagePenjual
-from ModulPembeli import PagePembeli
+from ModulPembeli import PagePembeli, showProduct
 
 DefVar.root.title("GaRas")
 DefVar.root.geometry("800x600+200+50")
