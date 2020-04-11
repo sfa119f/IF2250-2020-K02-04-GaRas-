@@ -1,10 +1,10 @@
-create table produk (id int auto_increment unique, nama varchar(50),harga int, stok float,berat int, spek varchar(300),image varchar(100),kategori varchar(20),primary key (id));
+create table produk (id int auto_increment unique, nama varchar(50),harga int, stok int,berat float, spek varchar(300),image varchar(100),kategori varchar(20),primary key (id));
 
 insert into produk values (null,"tongkat lipat",30000,100,0.8,"tongkat untuk tuna netra dan bisa dilipat","Foto/produk/tongkat.png","tuna netra");
 insert into produk values (null,"alquran braille",200000,30,0.5,"alquran braille untuk tuna netra","Foto/produk/alquran.png","tuna netra");
 insert into produk values (null,"kacamata hitam",150000,50,0.2,"kacamata hitam untuk tuna netra","Foto/produk/kacamata.png","tuna netra");
 insert into produk values (null,"alat tulis tunanetra",10000,150,0.3,"alat tulis tunanetra untuk tuna netra","Foto/produk/alat tulis.png","tuna netra");
-insert into produk values (null,"alat bantu belajar tunanetra",0.2,50000,10,"media belajar matematika","Foto/produk/alat belajar.jpg","tuna netra");
+insert into produk values (null,"alat bantu belajar tunanetra",50000,10,0.2,"media belajar matematika","Foto/produk/alat belajar.jpg","tuna netra");
 
 insert into produk values (null,"alat bantu dengar",70000,25,0.1,"alat bantu pendengaran","Foto/produk/alat dengar.png","tuna rungu");
 insert into produk values (null,"masker transparan",15000,80,0.05,"masker transparan untuk tuna rungu","Foto/produk/masker.jpg","tuna rungu");

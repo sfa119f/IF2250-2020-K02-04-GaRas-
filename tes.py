@@ -18,7 +18,7 @@ def UpdateStok(a, b):
 
         result = mycursor.fetchall()
 
-        temp = result[0][3]
+        temp = result[a][3]
         print (temp)
 
         temp = temp-b
@@ -49,6 +49,60 @@ def UpdateSpek(a, b):
         print("Berhasil mengubah spek produk!")
     except mysql.connector.Error as e:
         print("Gagal mengubah spek produk : {}".format(e))
+
+def UpdateHarga(a, b):
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="1234",
+            database="GaRas"
+        )
+        myc = mydb.cursor()
+        sql1 = "Update produk set harga = %s where nama = %s"
+        val1 = (b, a)
+
+        myc.execute(sql1, val1)
+        mydb.commit()
+        print("Berhasil mengubah harga produk!")
+    except mysql.connector.Error as e:
+        print("Gagal mengubah harga produk : {}".format(e))
+
+def UpdateNama(a, b):
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="1234",
+            database="GaRas"
+        )
+        myc = mydb.cursor()
+        sql1 = "Update produk set nama = %s where nama = %s"
+        val1 = (b, a)
+
+        myc.execute(sql1, val1)
+        mydb.commit()
+        print("Berhasil mengubah nama produk!")
+    except mysql.connector.Error as e:
+        print("Gagal mengubah nama produk : {}".format(e))
+
+def UpdateBerat(a, b):
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="1234",
+            database="GaRas"
+        )
+        myc = mydb.cursor()
+        sql1 = "Update produk set berat = %s where nama = %s"
+        val1 = (b, a)
+
+        myc.execute(sql1, val1)
+        mydb.commit()
+        print("Berhasil mengubah berat produk!")
+    except mysql.connector.Error as e:
+        print("Gagal mengubah berat produk : {}".format(e))
 
 def SearchProduk(a):
     try:
@@ -104,6 +158,9 @@ def SearchProduk(a):
 print("1. Mengupdate Stok")
 print("2. Mengupdate Spek")
 print("3. Mencari produk")
+print("4. Mengupdate Harga")
+print("5. Mengupdate Berat")
+print("6. Mengupdate Nama")
 x = int(input("Masukkan pilihan menu : "))
 if (x == 1):
     a = str(input("Masukkan nama produk : "))
@@ -111,10 +168,22 @@ if (x == 1):
     UpdateStok(a, b)
 elif (x==2):
     a = str(input("Masukkan nama produk : "))
-    b = str(input("Masukkan spek produk : "))
+    b = str(input("Masukkan spek baru produk : "))
     UpdateSpek(a, b)
 elif (x==3):
     a = str(input("Masukkan nama produk : "))
     print("Hasil pencarian : ")
     print()
     SearchProduk(a)
+elif (x==4):
+    a = str(input("Masukkan nama produk : "))
+    b = str(input("Masukkan harga baru produk : "))
+    UpdateHarga(a,b)
+elif (x==5):
+    a = str(input("Masukkan nama produk : "))
+    b = str(input("Masukkan berat baru produk : "))
+    UpdateBerat(a,b)
+elif (x==6):
+    a = str(input("Masukkan nama produk : "))
+    b = str(input("Masukkan nama baru produk : "))
+    UpdateNama(a,b)
