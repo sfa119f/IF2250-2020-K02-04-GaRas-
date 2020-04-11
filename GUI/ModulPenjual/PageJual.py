@@ -61,7 +61,7 @@ def jualProduk():
     penjual.place(x=x_entry+90, y=y_txt+450, anchor=W)
 
 def browseFile(picture):
-    img_name = filedialog.askopenfilename(initialdir = "data/", title = "Select A File", filetypes =(("jpeg files","*.jpg"),) )
+    img_name = filedialog.askopenfilename(initialdir = "data/", title = "Select A File", filetypes =(("jpeg files","*.jpg"),("png files","*.png")) )
     img_name = img_name.split("data/")[-1]
     picture.delete(0,END)
     picture.insert(0,img_name)
