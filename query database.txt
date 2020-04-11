@@ -1,0 +1,34 @@
+create table produk (id int auto_increment unique, nama varchar(50),harga int, stok float,berat int, spek varchar(300),image varchar(100),kategori varchar(20),primary key (id));
+
+insert into produk values (null,"tongkat lipat",30000,100,0.8,"tongkat untuk tuna netra dan bisa dilipat","Foto/produk/tongkat.png","tuna netra");
+insert into produk values (null,"alquran braille",200000,30,0.5,"alquran braille untuk tuna netra","Foto/produk/alquran.png","tuna netra");
+insert into produk values (null,"kacamata hitam",150000,50,0.2,"kacamata hitam untuk tuna netra","Foto/produk/kacamata.png","tuna netra");
+insert into produk values (null,"alat tulis tunanetra",10000,150,0.3,"alat tulis tunanetra untuk tuna netra","Foto/produk/alat tulis.png","tuna netra");
+insert into produk values (null,"alat bantu belajar tunanetra",0.2,50000,10,"media belajar matematika","Foto/produk/alat belajar.jpg","tuna netra");
+
+insert into produk values (null,"alat bantu dengar",70000,25,0.1,"alat bantu pendengaran","Foto/produk/alat dengar.png","tuna rungu");
+insert into produk values (null,"masker transparan",15000,80,0.05,"masker transparan untuk tuna rungu","Foto/produk/masker.jpg","tuna rungu");
+
+insert into produk values (null,"buku bahasa isyarat",35000,250,0.5,"buku untuk belajar bahasa isyarat","Foto/produk/buku.jpg","tuna wicara");
+insert into produk values (null,"translator",1000000,10,0.4,"alat penerjemah bahasa isyarat","Foto/produk/translator.jpg","tuna wicara");
+
+insert into produk values (null,"kursi roda",350000,60,5.0,"kursi roda untuk tuna daksa","Foto/produk/kursi roda.png","tuna daksa");
+insert into produk values (null,"kaki palsu",75000,70,2.0,"alat bantu jalan","Foto/produk/kaki palsu.png","tuna daksa");
+insert into produk values (null,"orthotic",95000,45,0.4,"alat bantu untuk tuna daksa","Foto/produk/orthotic.png","tuna daksa");
+insert into produk values (null,"splint",105000,35,0.4,"alat bantu untuk tuna daksa","Foto/produk/splint.png","tuna daksa");
+
+insert into produk values (null,"alat peraga",105000,35,0.3,"alat peraga untuk tuna grahita","Foto/produk/alat peraga.jpg","tuna grahita");
+
+create table kurir (id int auto_increment unique, nama varchar(50),harga int,alamat varchar(300),image varchar(100),primary key (id));
+
+insert into kurir values (null,"jne",10000,"Jalan A No.5 Bandung","Foto/kurir/jne.png");
+insert into kurir values (null,"jnt",9500,"Jalan B No.4 Bandung","Foto/kurir/jnt.png");
+insert into kurir values (null,"tiki",11000,"Jalan C No.3 Bandung","Foto/kurir/tiki.png");
+insert into kurir values (null,"sicepat",12000,"Jalan D No.6 Bandung","Foto/kurir/sicepat.png");
+
+create table pengguna (nama varchar(50),tanggal_lahir date,jenis_kelamin char,email varchar(50),nomor_gawai varchar(12),alamat varchar(100),peranan varchar(10),username varchar(20) unique,password varchar(20),image varchar(100),primary key(username));
+
+insert into pengguna values ("Aang","1995-08-18","P","aang@gmail.com","081223757474","Jalan H No.4","pembeli","aang","pass","Foto/pengguna/aang.png");
+insert into pengguna values ("Katara","1994-05-20","W","katara@gmail.com","081212797914","Jalan H No.5","pembeli","katara","word","Foto/pengguna/katara.png");
+insert into pengguna values ("Sokka","1990-01-01","P","sokka@gmail.com","081123657377","Jalan Z No.2","pembeli","sokka","1234","Foto/pengguna/sokka.png");
+insert into pengguna values ("Toph","1991-11-29","P","toph@gmail.com","082223444474","Jalan G No.5","penjual","toph","password","Foto/pengguna/toph.png");
