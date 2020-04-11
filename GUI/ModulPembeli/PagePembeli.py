@@ -28,8 +28,5 @@ def pagePembeli(frame):
     profil = Button(menu, text="Kategori", font= DefVar.font, activebackground=DefVar.redcolor, activeforeground=DefVar.white, fg=DefVar.white, bg=DefVar.background, padx=15, pady=5, relief=FLAT, width=10, command=KategoriProduk.kategoriProduk)
     profil.place(x=40, y=300, anchor=W)
 
-    transaksi = Button(menu, text="Transaksi", font= DefVar.font,activebackground=DefVar.redcolor, activeforeground=DefVar.white, fg=DefVar.white, bg=DefVar.background, padx=15, pady=5, relief=FLAT, width=10)
-    transaksi.place(x=40, y=350, anchor=W)
-
-    back = Button(menu, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.white, bg=DefVar.background, relief=FLAT, command=lambda:PageLogin.start(menu))
+    back = Button(menu, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, activeforeground=DefVar.white, fg=DefVar.white, bg=DefVar.background, relief=FLAT, command=lambda:PageLogin.start(menu))
     back.place(x=10, y=20, anchor=W)
