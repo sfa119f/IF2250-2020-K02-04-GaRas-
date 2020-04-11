@@ -1,6 +1,7 @@
 from tkinter import *
 import DefVar
 import PageLogin
+from ModulPembeli import showProduct
 
 def pagePembeli(frame):
     frame.destroy()
@@ -12,7 +13,7 @@ def pagePembeli(frame):
 
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
     berandaframe.place(x=200, y=50, height=550, width=600)
-
+    showProduct.showProduct("All")
     #Search
     searchtxt = Button(searchframe, text="Search", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white)
     searchtxt.place(x=510, y=25, anchor=W)
