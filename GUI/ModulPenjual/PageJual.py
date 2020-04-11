@@ -2,13 +2,12 @@ from tkinter import *
 from tkinter import filedialog
 import DefVar
 
-def jualProduk(frame):
+def jualProduk():
     #Default
     x_txt = 100
     y_txt = 100
     x_entry = 200
 
-    frame.destroy()
     jualframe = Frame(DefVar.root, bg=DefVar.white)
     jualframe.place(x=200, y=0, height=600, width=600)
 
