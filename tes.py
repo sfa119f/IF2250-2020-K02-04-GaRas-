@@ -50,8 +50,6 @@ def UpdateSpek(a, b):
     except mysql.connector.Error as e:
         print("Gagal mengubah spek produk : {}".format(e))
 
-<<<<<<< Updated upstream
-=======
 def UpdateHarga(a, b):
     try:
         mydb = mysql.connector.connect(
@@ -163,7 +161,6 @@ def Membeli(a, b, namapem, idkurir):
     except mysql.connector.Error as e:
         print("Gagal membeli produk : {}".format(e))
 
->>>>>>> Stashed changes
 def SearchProduk(a):
     try:
         mydb = mysql.connector.connect(
