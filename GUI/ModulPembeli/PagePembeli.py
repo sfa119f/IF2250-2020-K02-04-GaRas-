@@ -24,10 +24,17 @@ def pagePembeli(frame):
 
     #Foto Profil
     img = Image.open("../Foto/pengguna/katara.png")
-    img = img.resize((130,95), Image.ANTIALIAS)
+    wImg, hImg = img.size
+    if(wImg>hImg):
+        hImg = hImg*95//wImg
+        wImg = 95
+    else:
+        wImg = wImg*95//hImg
+        hImg = 95
+    img = img.resize((wImg, hImg), Image.ANTIALIAS)
     img = ImageTk.PhotoImage(img)
     panel = Label(menu, image=img)
-    panel.place(x=30,y=80)
+    panel.place(x=50,y=80)
     panel.img=img
 
     #Username

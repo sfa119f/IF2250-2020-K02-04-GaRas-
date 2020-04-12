@@ -53,7 +53,14 @@ def showProduct(page, searchBy, Key):
             frame1.place(x=x_, y=y_, width=200, height=160)
             
             img = Image.open(Produk[3])
-            img = img.resize((130,85), Image.ANTIALIAS)
+            wImg, hImg = img.size
+            if(wImg>hImg):
+                hImg = hImg*130//wImg
+                wImg = 130
+            else:
+                wImg = wImg*85//hImg
+                hImg = 85
+            img = img.resize((wImg, hImg), Image.ANTIALIAS)
             img = ImageTk.PhotoImage(img)
             panel = Label(frame1, image=img)
             panel.place(x=10,y=10)
