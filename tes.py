@@ -50,24 +50,6 @@ def UpdateSpek(a, b):
     except mysql.connector.Error as e:
         print("Gagal mengubah spek produk : {}".format(e))
 
-def Menjual(a, b, c, d, e, f):
-    try:
-        mydb = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            passwd="1234",
-            database="GaRas"
-        )
-        myc = mydb.cursor()
-        sql = "Insert into produk values (null, %s, %s, %s, %s, %s, %s)"
-        val = (a, b, c, d, e, f)
-
-        myc.execute(sql, val)
-        mydb.commit()
-        print("Berhasil menambah produk!")
-    except mysql.connector.Error as e:
-        print("Gagal menambah produk : {}".format(e))
-
 def SearchProduk(a):
     try:
         mydb = mysql.connector.connect(
@@ -141,10 +123,11 @@ elif (x==4):
     print("Hasil pencarian : ")
     print()
     SearchKategori(a)
-elif (x==5):
+"""elif (x==5):
     a = str(input("Masukkan nama produk : "))
     b = int(input("Masukkan harga produk : "))
     c = int(input("Masukkan stok produk : "))
     d = str(input("Masukkan spesifikasi produk : "))
-    e = str(input("Masukkan kategori produk : "))
-    Menjual(a, b, c, d, e)
+    e = str(input("Masukkan lokasi gambar produk : "))
+    f = str(input("Masukkan kategori produk : "))
+    Menjual(a, b, c, d, e, f)"""
