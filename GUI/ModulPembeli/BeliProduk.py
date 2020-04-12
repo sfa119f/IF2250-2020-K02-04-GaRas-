@@ -21,7 +21,14 @@ def beliProduk(NamaProduk):
 
     #Foto Produk
     img = Image.open(Produk[6])
-    img = img.resize((270,180), Image.ANTIALIAS)
+    wImg, hImg = img.size
+    if(wImg>hImg):
+        hImg = hImg*270//wImg
+        wImg = 270
+    else:
+        wImg = wImg*180//hImg
+        hImg = 180
+    img = img.resize((wImg, hImg), Image.ANTIALIAS)
     img = ImageTk.PhotoImage(img)
     panel = Label(frame, image=img)
     panel.place(x=150,y=10)
