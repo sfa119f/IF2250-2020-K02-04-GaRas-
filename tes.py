@@ -109,6 +109,30 @@ def Menjual(a, b, c, d, e, f, g):
     except mysql.connector.Error as e:
         print("Gagal menambah produk : {}".format(e))
 
+def HitungHarga(namaprod, jum, namakurir, berat):
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="XXX",
+            database="YYY"
+        )
+        mycursor = mydb.cursor()
+        sql = "select * from kurir where nama = %s"
+        val = (namakurir, )
+        mycursor.execute(sql, val)
+        result = mycursor.fetchall()
+        hargakur = result[0][2]
+        sql = "select * from produk where nama = %s"
+        val = (namaprod, )
+        mycursor.execute(sql, val)
+        result1 = mycursor.fetchall()
+        hargaprod = result1[0][2]
+        hargatot = (hargakur*berat) + (hargaprod*jum)
+        return hargatot
+    except mysql.connector.Error as e:
+        print("Gagal menghitung harga produk : {}".format(e))
+
 def Membeli(a, b, namapem, namakurir):
     try:
         mydb = mysql.connector.connect(
@@ -124,7 +148,6 @@ def Membeli(a, b, namapem, namakurir):
         result = mycursor.fetchall()
         temp = result[0][3]
         temp1 = result[0][0]
-        harprod = result[0][2]
         berat = result[0][4]
         temp = (temp-b)
         sql = "Update produk set stok = %s where nama = %s"
@@ -141,7 +164,7 @@ def Membeli(a, b, namapem, namakurir):
         mycursor.execute(sql, val)
         result2 = mycursor.fetchall()
         idkurir = result2[0][0]
-        harga = (result2[0][2]*berat) + (harprod*b)
+        harga = HitungHarga(a, b, namakurir, berat)
         sql = "Insert into transaksi values (null, %s, %s, %s, %s, %s, 'Diterima')"
         val = (namapem, namapen, temp1, idkurir, harga)
         mycursor.execute(sql, val)
