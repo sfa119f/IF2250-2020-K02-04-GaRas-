@@ -3,7 +3,7 @@ import DefVar
 from PIL import ImageTk,Image
 #from ModulPembeli import KategoriProduk, BerandaPembeli
 
-def showProduct(searchBy, Key):
+def showProduct(page, searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
     berandaframe.place(x=200, y=50, height=550, width=600)
 
@@ -18,10 +18,21 @@ def showProduct(searchBy, Key):
     G = ["G", "KategoriG", 10000, "../Foto/produk/tongkat.png"]
     H = ["H", "KategoriH", 10000, "../Foto/produk/masker.jpg"]
     I = ["I", "KategoriI", 10000, "../Foto/produk/orthotic.png"]
+    J = ["J", "KategoriJ", 10000, "../Foto/produk/tongkat.png"]
+    K = ["K", "KategoriK", 10000, "../Foto/produk/masker.jpg"]
+    L = ["L", "KategoriL", 10000, "../Foto/produk/orthotic.png"]
+    M = ["M", "KategoriM", 10000, "../Foto/produk/buku.jpg"]
+    N = ["N", "KategoriN", 10000, "../Foto/produk/masker.jpg"]
+    O = ["O", "KategoriO", 10000, "../Foto/produk/tongkat.png"]
+    P = ["P", "KategoriP", 10000, "../Foto/produk/kacamata.png"]
+    Q = ["Q", "KategoriQ", 10000, "../Foto/produk/buku.jpg"]
+    R = ["R", "KategoriR", 10000, "../Foto/produk/kacamata.png"]
+    S = ["S", "KategoriS", 10000, "../Foto/produk/tongkat.png"]
+    T = ["T", "KategoriT", 10000, "../Foto/produk/orthotic.png"]
 
     if(searchBy == "Search"):
         if(Key == "All"):
-            List = [A,B,C,D,E,F,G,H,I]
+            List = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T]
         else:
             #Misal Key == "A"
             List = [A]           
@@ -32,17 +43,17 @@ def showProduct(searchBy, Key):
     x_ = 0
     y_ = 0
     a = 0
-    i = 0
-    while(i<len(List)):
+    i = page*9-9
+    while(i<len(List) and i<page*9):
         a = 0
-        while(a<3 and i<len(List)):
+        while(a<3 and i<len(List) and i<page*9):
             Produk = List[i]
 
             frame1 = Frame(berandaframe, bg=DefVar.white)
-            frame1.place(x=x_, y=y_, width=200, height=170)
+            frame1.place(x=x_, y=y_, width=200, height=160)
             
             img = Image.open(Produk[3])
-            img = img.resize((130,95), Image.ANTIALIAS)
+            img = img.resize((130,85), Image.ANTIALIAS)
             img = ImageTk.PhotoImage(img)
             panel = Label(frame1, image=img)
             panel.place(x=10,y=10)
@@ -67,3 +78,17 @@ def showProduct(searchBy, Key):
 
         x_ = 0
         y_ += 180
+
+    drawPageLabel(page)
+
+    if(len(List)>=page*9):
+        nextButton = Button(DefVar.root, text="Next", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white, command=lambda:[showProduct(page+1,"Search","All"), drawPageLabel(page+1)])
+        nextButton.place(x=750, y=570)
+    
+    if(page!=1):
+        nextButton = Button(DefVar.root, text="Before", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white, command=lambda:[showProduct(page-1,"Search","All"), drawPageLabel(page-1)])
+        nextButton.place(x=220, y=570)
+    
+def drawPageLabel(page):
+    pageLabel = Label(DefVar.root, text="page "+str(page), bg=DefVar.white, font="Helvetica 8")
+    pageLabel.place(x=480, y=570)
