@@ -5,8 +5,8 @@ def UpdateStok(a, b):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         mycursor = mydb.cursor()
 
@@ -24,8 +24,8 @@ def UpdateSpek(a, b):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         myc = mydb.cursor()
         sql1 = "Update produk set spek = %s where nama = %s"
@@ -42,8 +42,8 @@ def UpdateHarga(a, b):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         myc = mydb.cursor()
         sql1 = "Update produk set harga = %s where nama = %s"
@@ -60,8 +60,8 @@ def UpdateNama(a, b):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         myc = mydb.cursor()
         sql1 = "Update produk set nama = %s where nama = %s"
@@ -78,8 +78,8 @@ def UpdateBerat(a, b):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         myc = mydb.cursor()
         sql1 = "Update produk set berat = %s where nama = %s"
@@ -122,8 +122,8 @@ def HitungHarga(namaprod, jum, namakurir, berat):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         mycursor = mydb.cursor()
         sql = "select * from kurir where nama = %s"
@@ -137,7 +137,7 @@ def HitungHarga(namaprod, jum, namakurir, berat):
         result1 = mycursor.fetchall()
         hargaprod = result1[0][2]
         hargatot = (hargakur*berat) + (hargaprod*jum)
-        return hargatot
+        return int(hargatot)
     except mysql.connector.Error as e:
         print("Gagal menghitung harga produk : {}".format(e))
 
@@ -146,8 +146,8 @@ def Membeli(a, b, namapem, namakurir):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         mycursor = mydb.cursor()
         sql = "Select * from produk where nama = %s"
@@ -188,8 +188,8 @@ def SearchProduk(a):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         mycursor = mydb.cursor()
         sql = "Select * from produk where nama like %s"
@@ -205,8 +205,8 @@ def SearchKategori(a):
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         mycursor = mydb.cursor()
         sql = "Select * from produk where kategori like %s"
@@ -222,8 +222,8 @@ def AllKurir():
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         mycursor = mydb.cursor()
         mycursor.execute("Select * from kurir")
@@ -237,14 +237,30 @@ def AllProduk():
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd="1234",
+            database="garas"
         )
         mycursor = mydb.cursor()
         mycursor.execute("Select * from produk")
         result = mycursor.fetchall()
-        return result
+        return (result)
     except mysql.connector.Error as e:
         print("Gagal mencari produk : {}".format(e))
 
+def AllJual(username):
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="1234",
+            database="garas"
+        )
+        mycursor = mydb.cursor()
+        sql = "Select * from produk where id in (select id from menjual where username = %s)"
+        val = (username, )
+        mycursor.execute(sql, val)
+        result = mycursor.fetchall()
+        return result
+    except mysql.connector.Error as e:
+        print("Gagal mencari produk : {}".format(e))
 

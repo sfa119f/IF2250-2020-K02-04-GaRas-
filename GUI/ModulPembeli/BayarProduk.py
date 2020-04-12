@@ -1,13 +1,14 @@
 from tkinter import *
 import DefVar
 from ModulPembeli import BerandaPembeli
+from ModulFungsi.tes import *
 
-def bayarProduk(Produk, Kurir):
+def bayarProduk(Produk, Kurir, jmlBarang):
     frame = Frame(DefVar.root, bg=DefVar.white)
     frame.place(x=200, y=50, height=550, width=600)
 
     #------------------------------------------------------------------
-    #Membeli(namaProduk, jmlBarang, DefVar.username, namaKurir)
+    Membeli(Produk[1], jmlBarang, DefVar.username, Kurir[1])
     #------------------------------------------------------------------
 
     #Message

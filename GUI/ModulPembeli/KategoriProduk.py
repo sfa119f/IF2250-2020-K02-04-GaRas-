@@ -1,7 +1,7 @@
 from tkinter import *
 import DefVar
 from ModulPembeli import showProduct, BerandaPembeli
-
+from ModulFungsi.tes import *
 def kategoriProduk():
     frame = Frame(DefVar.root, bg=DefVar.white)
     frame.place(x=200, y=50, height=550, width=600)

@@ -2,6 +2,7 @@ from tkinter import *
 import DefVar
 from PIL import ImageTk,Image
 from ModulPembeli import BayarProduk, showProduct
+from ModulFungsi.tes import *
 
 def beliProduk(NamaProduk):
     frame = Frame(DefVar.root, bg=DefVar.white)
@@ -10,17 +11,18 @@ def beliProduk(NamaProduk):
     x_ = 20
     y_ = 200
     #------------------------------------------------
-    #List = SearchProduk(NamaProduk)
-    #Produk = List[0]
+    List = SearchProduk(NamaProduk)
+    Produk = List[0]
     #------------------------------------------------
     
     #************************************************
     #Format: Produk = [id, nama, harga, stock, berat, spek, image, kategori]
-    Produk = [101, NamaProduk, 1000, 10, 10, "Desc", "../Foto/produk/buku.jpg", "Buku"]
+    #Produk = [101, NamaProduk, 1000, 10, 10, "Desc", "../Foto/produk/buku.jpg", "Buku"]
     #*************************************************
 
     #Foto Produk
-    img = Image.open(Produk[6])
+    filename = "../" + Produk[6]
+    img = Image.open(filename)
     wImg, hImg = img.size
     if(wImg>hImg):
         hImg = hImg*270//wImg
@@ -68,18 +70,18 @@ def beliProduk(NamaProduk):
     kurirText.place(x=x_, y=y_ + 200)
 
     #--------------------------------------------------------
-    #listKurir = AllKurir()
+    listKurir = AllKurir()
     #--------------------------------------------------------
 
     #********************************************************
     #Format: Kurir = [id, nama, harga, alamat, image]
-    Kurir1 = ["1", "JNE", 10000, "", ""]
-    Kurir2 = ["2", "JNT", 20000, "", ""]
-    Kurir3 = ["3", "SiCepat", 30000, "", ""]
-    Kurir4 = ["4", "Tiki", 40000, "", ""]
+    #Kurir1 = ["1", "JNE", 10000, "", ""]
+    #Kurir2 = ["2", "JNT", 20000, "", ""]
+    #Kurir3 = ["3", "SiCepat", 30000, "", ""]
+    #Kurir4 = ["4", "Tiki", 40000, "", ""]
 
     #listnya dimasukin list
-    listKurir = [Kurir1, Kurir2, Kurir3, Kurir4]
+    #listKurir = [Kurir1, Kurir2, Kurir3, Kurir4]
     #********************************************************
     var = StringVar(frame)
     opKurir = OptionMenu(frame, var, "JNE", "JNT", "SiCepat", "Tiki", command=lambda x=var.get():show(x, frame, listKurir, Produk, stock))
@@ -108,10 +110,10 @@ def show(value, frame, listKurir, Produk, stock):
         #total = "Rp. " + str(HitungHarga(Produk[1], jmlBarang, Kurir[2], Produk[4]))
         #-----------------------------------------------------------------------------------------------------
         #*****************************************************************************************************
-        total = showProduct.makeRp(str(Produk[2]*jmlBarang + Kurir[2]*Produk[4]))
+        total = showProduct.makeRp(str(HitungHarga(Produk[1], jmlBarang, Kurir[1], Produk[4])))
         #*****************************************************************************************************    
         totalharga = Label(frame, text = total, bg=DefVar.white, font="Helvetica 15 bold", padx=20)
         totalharga.place(x=290, y=390)
 
-        Bayar = Button(frame, text="Bayar", font=DefVar.font, activebackground=DefVar.white, activeforeground="#000000", fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda:BayarProduk.bayarProduk(Produk, Kurir))
+        Bayar = Button(frame, text="Bayar", font=DefVar.font, activebackground=DefVar.white, activeforeground="#000000", fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda:BayarProduk.bayarProduk(Produk, Kurir, jmlBarang))
         Bayar.place(x=230, y=500, anchor=W)

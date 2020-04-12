@@ -42,17 +42,17 @@ def showProduct(page, searchBy, Key):
             #*************************************************************
         else:
             #-------------------------------------------------------------
-            #List = SearchProduk(Key)
+            List = SearchProduk(Key)
             #-------------------------------------------------------------
             #*************************************************************
-            List = [A]
+            #List = [A]
             #*************************************************************           
-    elif(searchBy == "Kategori"):
+    else:
         #-----------------------------------------------------------------
-        #List = SearchKategori(Key)
+        List = SearchKategori(Key)
         #-----------------------------------------------------------------
         #*****************************************************************
-        List = [A,B,C]  
+        #List = [A,B,C]  
         #*****************************************************************
  
         
@@ -67,8 +67,8 @@ def showProduct(page, searchBy, Key):
 
             frame1 = Frame(berandaframe, bg=DefVar.white)
             frame1.place(x=x_, y=y_, width=200, height=160)
-            
-            img = Image.open(Produk[6])
+            filename = "../" + Produk[6]
+            img = Image.open(filename)
             wImg, hImg = img.size
             if(wImg>hImg):
                 hImg = hImg*130//wImg
