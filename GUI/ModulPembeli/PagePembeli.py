@@ -17,10 +17,11 @@ def pagePembeli(frame):
     DefVar.username = "Katara"
 
     #Search
-    searchtxt = Button(searchframe, text="Search", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white)
-    searchtxt.place(x=510, y=25, anchor=W)
     search = Entry(searchframe, bd=1, bg=DefVar.white, relief=GROOVE, width=75)
     search.place(x=50, y=25, anchor=W)
+    value = search.get()
+    searchtxt = Button(searchframe, text="Search", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white, command=lambda:showProduct.showProduct(1, "Search", value))
+    searchtxt.place(x=510, y=25, anchor=W)
 
     #Foto Profil
     img = Image.open("../Foto/pengguna/katara.png")
