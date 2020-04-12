@@ -107,7 +107,9 @@ def show(value, frame, listKurir, Produk, stock):
         #-----------------------------------------------------------------------------------------------------
         #total = "Rp. " + str(HitungHarga(Produk[1], jmlBarang, Kurir[2], Produk[4]))
         #-----------------------------------------------------------------------------------------------------
-        total = showProduct.makeRp(str(Produk[2]*jmlBarang + Kurir[2]*Produk[4]))    
+        #*****************************************************************************************************
+        total = showProduct.makeRp(str(Produk[2]*jmlBarang + Kurir[2]*Produk[4]))
+        #*****************************************************************************************************    
         totalharga = Label(frame, text = total, bg=DefVar.white, font="Helvetica 15 bold", padx=20)
         totalharga.place(x=290, y=390)
 
