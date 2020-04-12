@@ -12,14 +12,14 @@ def jualProduk():
     jualframe.place(x=200, y=0, height=600, width=600)
 
     #***************************************************************************************
-    #Produk = [101, "Nama Produk", 1000, 10, 10, "Desc", "../Foto/produk/buku.jpg", "Buku"]
+    Produk = [0, "", 0, 0, 0, "", "", ""]
     #***************************************************************************************
 
     #Nama Produk
     namatxt = Label(jualframe, text="Nama Produk", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
     namatxt.place(x=x_txt, y=y_txt, anchor=W)
-    v = StringVar()
-    nama = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=50, textvariable=v)
+    vNama = StringVar()
+    nama = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=50, textvariable=vNama)
     nama.place(x=x_entry, y=y_txt, anchor=W)
 
     #Kategori
@@ -27,7 +27,7 @@ def jualProduk():
     kategoritxt.place(x=x_txt, y=y_txt+50, anchor=W)
     var = StringVar(jualframe)
     var.set("")
-    kategori = OptionMenu(jualframe, var, "Tuna Netra", "Tuna Wicara", "Tuna Rungu", "Tuna Daksa", "Tuna Grahita")
+    kategori = OptionMenu(jualframe, var, "Tuna Netra", "Tuna Wicara", "Tuna Rungu", "Tuna Daksa", "Tuna Grahita", command=lambda x=var.get():setKategori(x,Produk))
     kategori.config(bd=1, bg=DefVar.white, relief=GROOVE, width=20)
     kategori.place(x=x_entry, y=y_txt+50, anchor=W)
     
@@ -58,17 +58,34 @@ def jualProduk():
     # #Picture
     picturetxt = Label(jualframe, text="Gambar", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
     picturetxt.place(x=x_txt, y=y_txt+390, anchor=W)
-    picture = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=35)
+    vPicture = StringVar()
+    picture = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=35, textvariable=vPicture)
     picture.place(x=x_entry, y=y_txt+390, anchor=W)
     browse = Button(jualframe,text='Browse File',command=lambda:browseFile(picture), font="Helvetica 8", activebackground=DefVar.redcolor, activeforeground=DefVar.white, fg=DefVar.text, bg=DefVar.white, relief=GROOVE)
     browse.place(x=x_entry+235, y=y_txt+390, anchor=W)
 
     #Simpan
-    penjual = Button(jualframe, text="Simpan", font=DefVar.font, activebackground=DefVar.white, activeforeground="#000000", fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10)
-    penjual.place(x=x_entry+90, y=y_txt+450, anchor=W)
+    simpan = Button(jualframe, text="Simpan", font=DefVar.font, activebackground=DefVar.white, activeforeground="#000000", fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda: setEntry(vNama.get(), harga.get(), stock.get(), berat.get(), spek.get("1.0","end-1c"), vPicture.get(), Produk))
+    simpan.place(x=x_entry+90, y=y_txt+450, anchor=W)
 
 def browseFile(picture):
     img_name = filedialog.askopenfilename(initialdir = "data/", title = "Select A File", filetypes =(("jpeg files","*.jpg"),("png files","*.png")) )
     img_name = img_name.split("data/")[-1]
     picture.delete(0,END)
     picture.insert(0,img_name)
+
+def setEntry(nama, harga, stock, berat, spesifikasi, gambar, Produk):
+    Produk[1] = nama
+    Produk[2] = harga
+    Produk[3] = stock
+    Produk[4] = berat
+    Produk[5] = spesifikasi
+    Produk[6] = gambar
+    saveProduct(Produk)
+
+def setKategori(a,Produk):
+    Produk[7] = a
+
+    #nama, harga, stok, berat, spek, image, kategori
+def saveProduct(Produk):
+    #Menjual(Produk[1], Produk[2], Produk[3], Produk[4], Produk[5], Produk[6], Produk[7])
