@@ -109,6 +109,29 @@ def Menjual(a, b, c, d, e, f, g):
     except mysql.connector.Error as e:
         print("Gagal menambah produk : {}".format(e))
 
+def Membeli(a, b):
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="XXX",
+            database="YYY"
+        )
+        mycursor = mydb.cursor()
+        sql = "Select * from produk where nama = %s"
+        val = (a, )
+        mycursor.execute(sql, val)
+        result = mycursor.fetchall()
+        temp = result[0][3]
+        temp = temp-b
+        sql = "Update produk set stok = %s where nama = %s"
+        val = (temp, a)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        sql = 
+    except mysql.connector.Error as e:
+        print("Gagal membeli produk : {}".format(e))
+
 def SearchProduk(a):
     try:
         mydb = mysql.connector.connect(
