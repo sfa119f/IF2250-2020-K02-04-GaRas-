@@ -1,5 +1,6 @@
 from tkinter import *
 import DefVar
+from ModulPembeli import KategoriProduk, BerandaPembeli
 
 def showProduct(searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
@@ -19,12 +20,22 @@ def showProduct(searchBy, Key):
     if(searchBy == "Search"):
         if(Key == "All"):
             List = [A,B,C,D,E,F,G,H,I]
+
         else:
             #Misal Key == "A"
-            List = [A]           
+            List = [A]
+
+            #Button : Back
+            back = Button(berandaframe, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=BerandaPembeli.berandaPembeli)
+            back.place(x=10, y=20, anchor=W)
+                       
     elif(searchBy == "Kategori"):
         #Key == "KategoriA"
-        List = [A,B,C]  
+        List = [A,B,C] 
+
+        #Button : Back
+        back = Button(berandaframe, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=KategoriProduk.kategoriProduk)
+        back.place(x=10, y=20, anchor=W) 
         
     x_ = 0
     y_ = 0
