@@ -22,7 +22,7 @@ def jualProduk():
     kategoritxt.place(x=x_txt, y=y_txt+50, anchor=W)
     var = StringVar(jualframe)
     var.set("")
-    kategori = OptionMenu(jualframe, var, "Keperluan Tuna Netra", "Keperluan Tuna Wicara")
+    kategori = OptionMenu(jualframe, var, "Keperluan Tuna Netra", "Keperluan Tuna Wicara", "Keperluan Tuna Rungu", "Keperluan Tuna Daksa", "Keperluan Tuna Grahita")
     kategori.config(bd=1, bg=DefVar.white, relief=GROOVE, width=20)
     kategori.place(x=x_entry, y=y_txt+50, anchor=W)
     
