@@ -109,7 +109,7 @@ def Menjual(a, b, c, d, e, f, g):
     except mysql.connector.Error as e:
         print("Gagal menambah produk : {}".format(e))
 
-def Membeli(a, b, namapem, idkurir):
+def Membeli(a, b, namapem, namakurir):
     try:
         mydb = mysql.connector.connect(
             host="127.0.0.1",
@@ -133,18 +133,21 @@ def Membeli(a, b, namapem, idkurir):
         mydb.commit()
         sql = "Select * from menjual where id = %s"
         val = (temp1, )
+        mycursor.execute(sql, val)
         result1 = mycursor.fetchall()
         namapen = result1[0][0]
-        sql = "Select * from kurir where id = %s"
-        val = (idkurir, )
+        sql = "Select * from kurir where nama = %s"
+        val = (namakurir, )
         mycursor.execute(sql, val)
         result2 = mycursor.fetchall()
-        harga = (result2[0][2]*berat) + harprod
+        idkurir = result2[0][0]
+        harga = (result2[0][2]*berat) + (harprod*b)
         sql = "Insert into transaksi values (null, %s, %s, %s, %s, %s, 'Diterima')"
         val = (namapem, namapen, temp1, idkurir, harga)
         mycursor.execute(sql, val)
         mydb.commit()
         print("Berhasil membeli produk!")
+        return harga
     except mysql.connector.Error as e:
         print("Gagal membeli produk : {}".format(e))
 
@@ -251,5 +254,6 @@ elif (x==9):
     a = str(input("Masukkan nama produk : "))
     b = int(input("Masukkan jumlah produk : "))
     c = str(input("Masukkan nama pembeli : "))
-    d = str(input("Masukkan jasa kurir : "))
-    Membeli(a,b,c,d)
+    d = str(input("Masukkan nama jasa kurir : "))
+    harga = Membeli(a,b,c,d)
+    print(harga)
