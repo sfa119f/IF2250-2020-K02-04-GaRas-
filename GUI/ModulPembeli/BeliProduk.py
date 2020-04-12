@@ -65,7 +65,7 @@ def beliProduk(NamaProduk):
 
     #Pilihan Kurir
     kurirText = Label(frame, text="Ekspedisi Pengiriman", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white)
-    kurirText.place(x=x_ + 250, y=y_ + 200)
+    kurirText.place(x=x_, y=y_ + 200)
 
     #--------------------------------------------------------
     #listKurir = AllKurir()
