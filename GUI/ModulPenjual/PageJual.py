@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 import DefVar
+from ModulFungsi.tes import *
 
 def jualProduk():
     #Default
@@ -88,4 +89,4 @@ def setKategori(a,Produk):
 
     #nama, harga, stok, berat, spek, image, kategori
 def saveProduct(Produk):
-    #Menjual(Produk[1], Produk[2], Produk[3], Produk[4], Produk[5], Produk[6], Produk[7])
+    Menjual(Produk[1], Produk[2], Produk[3], Produk[4], Produk[5], Produk[6], Produk[7], DefVar.username)

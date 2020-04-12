@@ -2,6 +2,7 @@ from tkinter import *
 import DefVar
 from PIL import ImageTk,Image
 from ModulPembeli import BeliProduk, PagePembeli
+from ModulFungsi.tes import *
 
 def showProduct(page, searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
@@ -10,34 +11,34 @@ def showProduct(page, searchBy, Key):
     #****************************************************************************************
     #Contoh Data
     #Format: Produk = [id(0), nama(1), harga(2), stock(3), berat(4), spek(5), image(6), kategori(7)]
-    A = [1, "A", 10000, 10, 1, "Spek", "../Foto/produk/kacamata.png", "KategoriA"]
-    B = [2, "B", 20000, 50, 1, "Spek", "../Foto/produk/buku.jpg", "KategoriA"]
-    C = [3, "C", 30000, 40, 1, "Spek", "../Foto/produk/kacamata.png","KategoriA"]
-    D = [4, "D", 40000, 30, 1, "Spek", "../Foto/produk/buku.jpg", "KategoriB"]
-    E = [5, "E", 30000, 10, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriE"]
-    F = [6, "F", 20000, 50, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriF"]
-    G = [7, "G", 20000, 10, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriD"]
-    H = [8, "H", 10000, 20, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriH"]
-    I = [9, "I", 10000, 10, 1, "Spek", "../Foto/produk/orthotic.png", "KategoriI"]
-    J = [10, "J", 10200, 20, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriA"]
-    K = [11, "K", 30000, 11, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriA"]
-    L = [12, "L", 10000, 12, 1, "Spek", "../Foto/produk/orthotic.png", "KategoriA"]
-    M = [13, "M", 10200, 11, 1, "Spek", "../Foto/produk/buku.jpg","KategoriA"]
-    N = [14, "N", 20000, 12, 1, "Spek", "../Foto/produk/masker.jpg","KategoriA"]
-    O = [15, "O", 20000, 13, 1, "Spek", "../Foto/produk/tongkat.png", "Kategori"]
-    P = [16, "P", 10000, 14, 1, "Spek", "../Foto/produk/kacamata.png", "Kategori"]
-    Q = [17, "Q", 10000, 13, 1, "Spek", "../Foto/produk/buku.jpg", "Kategori"]
-    R = [18, "R", 20000, 11, 1, "Spek", "../Foto/produk/kacamata.png","Kategori"]
-    S = [19, "S", 10000, 11, 1, "Spek", "../Foto/produk/tongkat.png", "Kategori"]
-    T = [20, "T", 90000, 15, 1, "Spek", "../Foto/produk/orthotic.png", "Kategori"]
+    #A = [1, "A", 10000, 10, 1, "Spek", "../Foto/produk/kacamata.png", "KategoriA"]
+    #B = [2, "B", 20000, 50, 1, "Spek", "../Foto/produk/buku.jpg", "KategoriA"]
+    #C = [3, "C", 30000, 40, 1, "Spek", "../Foto/produk/kacamata.png","KategoriA"]
+    #D = [4, "D", 40000, 30, 1, "Spek", "../Foto/produk/buku.jpg", "KategoriB"]
+    #E = [5, "E", 30000, 10, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriE"]
+    #F = [6, "F", 20000, 50, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriF"]
+    #G = [7, "G", 20000, 10, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriD"]
+    #H = [8, "H", 10000, 20, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriH"]
+    #I = [9, "I", 10000, 10, 1, "Spek", "../Foto/produk/orthotic.png", "KategoriI"]
+    #J = [10, "J", 10200, 20, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriA"]
+    #K = [11, "K", 30000, 11, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriA"]
+    #L = [12, "L", 10000, 12, 1, "Spek", "../Foto/produk/orthotic.png", "KategoriA"]
+    #M = [13, "M", 10200, 11, 1, "Spek", "../Foto/produk/buku.jpg","KategoriA"]
+    #N = [14, "N", 20000, 12, 1, "Spek", "../Foto/produk/masker.jpg","KategoriA"]
+    #O = [15, "O", 20000, 13, 1, "Spek", "../Foto/produk/tongkat.png", "Kategori"]
+    #P = [16, "P", 10000, 14, 1, "Spek", "../Foto/produk/kacamata.png", "Kategori"]
+    #Q = [17, "Q", 10000, 13, 1, "Spek", "../Foto/produk/buku.jpg", "Kategori"]
+    #R = [18, "R", 20000, 11, 1, "Spek", "../Foto/produk/kacamata.png","Kategori"]
+    #S = [19, "S", 10000, 11, 1, "Spek", "../Foto/produk/tongkat.png", "Kategori"]
+    #T = [20, "T", 90000, 15, 1, "Spek", "../Foto/produk/orthotic.png", "Kategori"]
     #***********************************************************************************************
     if(searchBy == "Search"):
         if(Key == "All"):
             #-------------------------------------------------------------
-            #List = AllProduk()
+            List = AllProduk()
             #-------------------------------------------------------------
             #*************************************************************
-            List = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T]
+            #List = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T]
             #*************************************************************
         else:
             #-------------------------------------------------------------
