@@ -188,15 +188,7 @@ def SearchProduk(a):
         val = (a + '%', )
         mycursor.execute(sql, val)
         result = mycursor.fetchall()
-        a = 0
-        for x in result:
-            print("Nama produk :", result[a][1])
-            print("Harga produk :", result[a][2])
-            print("Stok produk :", result[a][3])
-            print("Spesifikasi produk :", result[a][4])
-            #print("Kategori produk : ", result[a][5])
-            print()
-            a+=1
+        return result
     except mysql.connector.Error as e:
         print("Gagal mencari produk : {}".format(e))
 
@@ -213,17 +205,41 @@ def SearchKategori(a):
         val = (a, )
         mycursor.execute(sql, val)
         result = mycursor.fetchall()
-        a = 0
-        for x in result:
-            print("Nama produk : ", result[a][1])
-            print("Harga produk : ", result[a][2])
-            print("Stok produk : ", result[a][3])
-            print("Spesifikasi produk : ", result[a][4])
-            #print("Kategori produk : ", result[a][5])
-            print()
-            a+=1
+        return result
     except mysql.connector.Error as e:
         print("Gagal mencari produk : {}".format(e))
+
+def AllKurir():
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="XXX",
+            database="YYY"
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute("Select * from kurir")
+        result = mycursor.fetchall()
+        return result
+    except mysql.connector.Error as e:
+        print("Gagal mencari kurir : {}".format(e))
+
+def AllProduk():
+    try:
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="XXX",
+            database="YYY"
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute("Select * from produk")
+        result = mycursor.fetchall()
+        return result
+    except mysql.connector.Error as e:
+        print("Gagal mencari produk : {}".format(e))
+
+
 
 
 print("1. Mengupdate Stok")
