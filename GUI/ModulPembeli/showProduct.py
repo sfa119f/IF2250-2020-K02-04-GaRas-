@@ -1,5 +1,6 @@
 from tkinter import *
 import DefVar
+from PIL import ImageTk,Image
 from ModulPembeli import KategoriProduk, BerandaPembeli
 
 def showProduct(searchBy, Key):
@@ -7,15 +8,16 @@ def showProduct(searchBy, Key):
     berandaframe.place(x=200, y=50, height=550, width=600)
 
     #Contoh Data
-    A = ["A", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    B = ["B", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    C = ["C", "KategoriA", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    D = ["D", "KategoriD", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    E = ["E", "KategoriE", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    F = ["F", "KategoriF", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    G = ["G", "KategoriG", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    H = ["H", "KategoriH", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
-    I = ["I", "KategoriI", 10000, 10, 1, "Blablabla", "Foto/pengguna/Aang.jpg"]
+    #Format : [Nama, Kategori, Harga, ImagePath]
+    A = ["A", "KategoriA", 10000, "../Foto/produk/kacamata.png"]
+    B = ["B", "KategoriA", 10000, "../Foto/produk/buku.jpg"]
+    C = ["C", "KategoriA", 10000, "../Foto/produk/kacamata.png"]
+    D = ["D", "KategoriD", 10000, "../Foto/produk/buku.jpg"]
+    E = ["E", "KategoriE", 10000, "../Foto/produk/masker.jpg"]
+    F = ["F", "KategoriF", 10000, "../Foto/produk/tongkat.png"]
+    G = ["G", "KategoriG", 10000, "../Foto/produk/tongkat.png"]
+    H = ["H", "KategoriH", 10000, "../Foto/produk/masker.jpg"]
+    I = ["I", "KategoriI", 10000, "../Foto/produk/orthotic.png"]
 
     if(searchBy == "Search"):
         if(Key == "All"):
@@ -49,6 +51,13 @@ def showProduct(searchBy, Key):
             frame1 = Frame(berandaframe, bg=DefVar.white)
             frame1.place(x=x_, y=y_, width=200, height=170)
             
+            img = Image.open(Produk[3])
+            img = img.resize((130,95), Image.ANTIALIAS)
+            img = ImageTk.PhotoImage(img)
+            panel = Label(frame1, image=img)
+            panel.place(x=10,y=0)
+            panel.img=img
+
             #Nama
             nama = Label(frame1, text = Produk[0], bg=DefVar.white, font="Helvetica 8")
             nama.place(x=10, y=100)
@@ -62,7 +71,6 @@ def showProduct(searchBy, Key):
             jual = Button(frame1, text="Beli", font= "Helvetica 8", activebackground=DefVar.white, activeforeground=DefVar.text, fg=DefVar.white, bg=DefVar.redcolor, relief=FLAT)
             jual.place(x=10, y=150, anchor=W)
 
-            #Picturenya belom bisa :(
             x_ += 200
             a += 1
             i += 1
