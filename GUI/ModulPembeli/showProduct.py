@@ -67,7 +67,6 @@ def showProduct(Kategori):
             jual = Button(frame1, text="Beli", font= "Helvetica 8", activebackground=DefVar.white, activeforeground=DefVar.text, fg=DefVar.white, bg=DefVar.redcolor, relief=FLAT)
             jual.place(x=10, y=150, anchor=W)
 
-            #Picturenya belom bisa :(
             x_ += 200
             a += 1
             i += 1
