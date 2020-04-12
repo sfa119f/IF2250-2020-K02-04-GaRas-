@@ -7,38 +7,53 @@ def showProduct(page, searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
     berandaframe.place(x=200, y=50, height=550, width=600)
 
+    #****************************************************************************************
     #Contoh Data
-    #Format : [Nama, Kategori, Harga, ImagePath]
-    A = ["A", "KategoriA", 10000, "../Foto/produk/kacamata.png"]
-    B = ["B", "KategoriA", 10000, "../Foto/produk/buku.jpg"]
-    C = ["C", "KategoriA", 10000, "../Foto/produk/kacamata.png"]
-    D = ["D", "KategoriD", 10000, "../Foto/produk/buku.jpg"]
-    E = ["E", "KategoriE", 10000, "../Foto/produk/masker.jpg"]
-    F = ["F", "KategoriF", 10000, "../Foto/produk/tongkat.png"]
-    G = ["G", "KategoriG", 10000, "../Foto/produk/tongkat.png"]
-    H = ["H", "KategoriH", 10000, "../Foto/produk/masker.jpg"]
-    I = ["I", "KategoriI", 10000, "../Foto/produk/orthotic.png"]
-    J = ["J", "KategoriJ", 10000, "../Foto/produk/tongkat.png"]
-    K = ["K", "KategoriK", 10000, "../Foto/produk/masker.jpg"]
-    L = ["L", "KategoriL", 10000, "../Foto/produk/orthotic.png"]
-    M = ["M", "KategoriM", 10000, "../Foto/produk/buku.jpg"]
-    N = ["N", "KategoriN", 10000, "../Foto/produk/masker.jpg"]
-    O = ["O", "KategoriO", 10000, "../Foto/produk/tongkat.png"]
-    P = ["P", "KategoriP", 10000, "../Foto/produk/kacamata.png"]
-    Q = ["Q", "KategoriQ", 10000, "../Foto/produk/buku.jpg"]
-    R = ["R", "KategoriR", 10000, "../Foto/produk/kacamata.png"]
-    S = ["S", "KategoriS", 10000, "../Foto/produk/tongkat.png"]
-    T = ["T", "KategoriT", 10000, "../Foto/produk/orthotic.png"]
-
+    #Format: Produk = [id(0), nama(1), harga(2), stock(3), berat(4), spek(5), image(6), kategori(7)]
+    A = [1, "A", 10000, 10, 1, "Spek", "../Foto/produk/kacamata.png", "KategoriA"]
+    B = [2, "B", 20000, 50, 1, "Spek", "../Foto/produk/buku.jpg", "KategoriA"]
+    C = [3, "C", 30000, 40, 1, "Spek", "../Foto/produk/kacamata.png","KategoriA"]
+    D = [4, "D", 40000, 30, 1, "Spek", "../Foto/produk/buku.jpg", "KategoriB"]
+    E = [5, "E", 30000, 10, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriE"]
+    F = [6, "F", 20000, 50, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriF"]
+    G = [7, "G", 20000, 10, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriD"]
+    H = [8, "H", 10000, 20, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriH"]
+    I = [9, "I", 10000, 10, 1, "Spek", "../Foto/produk/orthotic.png", "KategoriI"]
+    J = [10, "J", 10200, 20, 1, "Spek", "../Foto/produk/tongkat.png", "KategoriA"]
+    K = [11, "K", 30000, 11, 1, "Spek", "../Foto/produk/masker.jpg", "KategoriA"]
+    L = [12, "L", 10000, 12, 1, "Spek", "../Foto/produk/orthotic.png", "KategoriA"]
+    M = [13, "M", 10200, 11, 1, "Spek", "../Foto/produk/buku.jpg","KategoriA"]
+    N = [14, "N", 20000, 12, 1, "Spek", "../Foto/produk/masker.jpg","KategoriA"]
+    O = [15, "O", 20000, 13, 1, "Spek", "../Foto/produk/tongkat.png", "Kategori"]
+    P = [16, "P", 10000, 14, 1, "Spek", "../Foto/produk/kacamata.png", "Kategori"]
+    Q = [17, "Q", 10000, 13, 1, "Spek", "../Foto/produk/buku.jpg", "Kategori"]
+    R = [18, "R", 20000, 11, 1, "Spek", "../Foto/produk/kacamata.png","Kategori"]
+    S = [19, "S", 10000, 11, 1, "Spek", "../Foto/produk/tongkat.png", "Kategori"]
+    T = [20, "T", 90000, 15, 1, "Spek", "../Foto/produk/orthotic.png", "Kategori"]
+    #***********************************************************************************************
     if(searchBy == "Search"):
         if(Key == "All"):
+            #-------------------------------------------------------------
+            #List = AllProduk()
+            #-------------------------------------------------------------
+            #*************************************************************
             List = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T]
+            #*************************************************************
         else:
-            #Misal Key == "A"
-            List = [A]           
+            #-------------------------------------------------------------
+            #List = SearchProduk(Key)
+            #-------------------------------------------------------------
+            #*************************************************************
+            List = [A]
+            #*************************************************************           
     elif(searchBy == "Kategori"):
-        #Key == "KategoriA"
+        #-----------------------------------------------------------------
+        #List = SearchKategori(Key)
+        #-----------------------------------------------------------------
+        #*****************************************************************
         List = [A,B,C]  
+        #*****************************************************************
+ 
         
     x_ = 0
     y_ = 0
@@ -52,7 +67,7 @@ def showProduct(page, searchBy, Key):
             frame1 = Frame(berandaframe, bg=DefVar.white)
             frame1.place(x=x_, y=y_, width=200, height=160)
             
-            img = Image.open(Produk[3])
+            img = Image.open(Produk[6])
             wImg, hImg = img.size
             if(wImg>hImg):
                 hImg = hImg*130//wImg
@@ -67,7 +82,7 @@ def showProduct(page, searchBy, Key):
             panel.img=img
 
             #Nama
-            nama = Label(frame1, text = Produk[0], bg=DefVar.white, font="Helvetica 8")
+            nama = Label(frame1, text = Produk[1], bg=DefVar.white, font="Helvetica 8")
             nama.place(x=10, y=100)
             
             #Harga
@@ -76,7 +91,7 @@ def showProduct(page, searchBy, Key):
             harga.place(x=10, y=115)
 
             #Button Beli
-            jual = Button(frame1, text="Beli", font= "Helvetica 8", activebackground=DefVar.white, activeforeground=DefVar.text, fg=DefVar.white, bg=DefVar.redcolor, relief=FLAT, command=lambda a = Produk[0] : BeliProduk.beliProduk(a))
+            jual = Button(frame1, text="Beli", font= "Helvetica 8", activebackground=DefVar.white, activeforeground=DefVar.text, fg=DefVar.white, bg=DefVar.redcolor, relief=FLAT, command=lambda a = Produk[1] : BeliProduk.beliProduk(a))
             jual.place(x=10, y=150, anchor=W)
 
             x_ += 200
