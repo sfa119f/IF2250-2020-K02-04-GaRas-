@@ -109,7 +109,7 @@ def showProduct(page, searchBy, Key):
         nextButton.place(x=750, y=570)
     
     if(page!=1):
-        nextButton = Button(DefVar.root, text="Before", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white, command=lambda:[showProduct(page-1,"Search","All"), drawPageLabel(page-1)])
+        nextButton = Button(DefVar.root, text="Previous", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white, command=lambda:[showProduct(page-1,"Search","All"), drawPageLabel(page-1)])
         nextButton.place(x=220, y=570)
     
 def drawPageLabel(page):

@@ -1,7 +1,7 @@
 from tkinter import *
 import DefVar
 from PIL import ImageTk,Image
-from ModulPembeli import BayarProduk, showProduct
+from ModulPembeli import BayarProduk, showProduct,BerandaPembeli
 from ModulFungsi.tes import *
 
 def beliProduk(NamaProduk):
@@ -68,6 +68,10 @@ def beliProduk(NamaProduk):
     #Pilihan Kurir
     kurirText = Label(frame, text="Ekspedisi Pengiriman", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white)
     kurirText.place(x=x_, y=y_ + 200)
+
+    #Back
+    back = Button(frame, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=BerandaPembeli.berandaPembeli)
+    back.place(x=10, y=20, anchor=W)
 
     #--------------------------------------------------------
     listKurir = AllKurir()

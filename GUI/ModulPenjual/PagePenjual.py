@@ -39,5 +39,5 @@ def pagePenjual(frame):
     jual = Button(menu, text="Jual", font= DefVar.font, activebackground=DefVar.redcolor, fg=DefVar.white, bg=DefVar.background, padx=15, pady=5, relief=FLAT, width=10, command=PageJual.jualProduk)
     jual.place(x=40, y=350, anchor=W)
 
-    back = Button(menu, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.white, bg=DefVar.background, relief=FLAT, command=lambda:PageLogin.start(menu))
+    back = Button(menu, text="Home", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.white, bg=DefVar.background, relief=FLAT, command=lambda:PageLogin.start(menu))
     back.place(x=10, y=20, anchor=W)

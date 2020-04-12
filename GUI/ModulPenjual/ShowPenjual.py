@@ -8,6 +8,12 @@ def ShowPenjual(page):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
     berandaframe.place(x=200, y=50, height=550, width=600)
 
+    searchframe = Frame(DefVar.root, bg=DefVar.redcolor)
+    searchframe.place(x=200, y=0, height=50, width=600)
+
+    judul = Label(searchframe,text="Produk yang dijual: ",fg=DefVar.white,bg=DefVar.redcolor,font="Helvetica 12 bold")
+    judul.place(x=35, y=13)
+
     x_ = 0
     y_ = 0
     a = 0
@@ -36,13 +42,17 @@ def ShowPenjual(page):
             panel.img=img
 
             #Nama
-            nama = Label(frame1, text = Produk[1], bg=DefVar.white, font="Helvetica 8")
+            nama = Label(frame1, text = Produk[1], bg=DefVar.white, font="Helvetica 10 bold")
             nama.place(x=10, y=100)
             
             #Harga
             hargajual = showProduct.makeRp(str(Produk[2]))
-            harga = Label(frame1, text = hargajual, bg=DefVar.white, font="Helvetica 8")
-            harga.place(x=10, y=115)
+            harga = Label(frame1, text = hargajual, bg=DefVar.white, font="Helvetica 10")
+            harga.place(x=10, y=120)
+
+            #Stok
+            stok = Label(frame1, text = "Stok: " + str(Produk[3]), bg=DefVar.white, font="Helvetica 8")
+            stok.place(x=10, y=140)
 
             x_ += 200
             a += 1
@@ -58,9 +68,9 @@ def ShowPenjual(page):
         nextButton.place(x=750, y=570)
     
     if(page!=1):
-        nextButton = Button(DefVar.root, text="Before", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white, command=lambda:[showProduct(page-1,"Search","All"), drawPageLabel(page-1)])
+        nextButton = Button(DefVar.root, text="Previous", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white, command=lambda:[showProduct(page-1,"Search","All"), drawPageLabel(page-1)])
         nextButton.place(x=220, y=570)
-    
+
 def drawPageLabel(page):
     pageLabel = Label(DefVar.root, text="page "+str(page), bg=DefVar.white, font="Helvetica 8")
     pageLabel.place(x=480, y=570)

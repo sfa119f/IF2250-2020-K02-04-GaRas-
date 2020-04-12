@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog
 import DefVar
 from ModulFungsi.tes import *
+from ModulPenjual import BerandaPenjual,SimpanProduk
 
 def jualProduk():
     #Default
@@ -69,6 +70,10 @@ def jualProduk():
     simpan = Button(jualframe, text="Simpan", font=DefVar.font, activebackground=DefVar.white, activeforeground="#000000", fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda: setEntry(vNama.get(), harga.get(), stock.get(), berat.get(), spek.get("1.0","end-1c"), vPicture.get(), Produk))
     simpan.place(x=x_entry+90, y=y_txt+450, anchor=W)
 
+    #back
+    back = Button(jualframe, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=BerandaPenjual.BerandaPenjual)
+    back.place(x=10, y=20, anchor=W)
+
 def browseFile(picture):
     img_name = filedialog.askopenfilename(initialdir = "data/", title = "Select A File", filetypes =(("jpeg files","*.jpg"),("png files","*.png")) )
     img_name = img_name.split("data/")[-1]
@@ -83,6 +88,7 @@ def setEntry(nama, harga, stock, berat, spesifikasi, gambar, Produk):
     Produk[5] = spesifikasi
     Produk[6] = gambar
     saveProduct(Produk)
+    SimpanProduk.simpanProduk()
 
 def setKategori(a,Produk):
     Produk[7] = a
@@ -90,3 +96,7 @@ def setKategori(a,Produk):
     #nama, harga, stok, berat, spek, image, kategori
 def saveProduct(Produk):
     Menjual(Produk[1], Produk[2], Produk[3], Produk[4], Produk[5], Produk[6], Produk[7], DefVar.username)
+
+
+
+
