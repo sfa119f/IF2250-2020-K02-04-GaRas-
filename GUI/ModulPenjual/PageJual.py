@@ -11,10 +11,15 @@ def jualProduk():
     jualframe = Frame(DefVar.root, bg=DefVar.white)
     jualframe.place(x=200, y=0, height=600, width=600)
 
+    #***************************************************************************************
+    #Produk = [101, "Nama Produk", 1000, 10, 10, "Desc", "../Foto/produk/buku.jpg", "Buku"]
+    #***************************************************************************************
+
     #Nama Produk
     namatxt = Label(jualframe, text="Nama Produk", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
     namatxt.place(x=x_txt, y=y_txt, anchor=W)
-    nama = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=50)
+    v = StringVar()
+    nama = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=50, textvariable=v)
     nama.place(x=x_entry, y=y_txt, anchor=W)
 
     #Kategori
