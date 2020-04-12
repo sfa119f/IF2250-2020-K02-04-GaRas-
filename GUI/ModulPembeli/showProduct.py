@@ -1,7 +1,7 @@
 from tkinter import *
 import DefVar
 from PIL import ImageTk,Image
-from ModulPembeli import KategoriProduk, BerandaPembeli
+#from ModulPembeli import KategoriProduk, BerandaPembeli
 
 def showProduct(searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
@@ -22,22 +22,12 @@ def showProduct(searchBy, Key):
     if(searchBy == "Search"):
         if(Key == "All"):
             List = [A,B,C,D,E,F,G,H,I]
-
         else:
             #Misal Key == "A"
-            List = [A]
-
-            #Button : Back
-            back = Button(berandaframe, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=BerandaPembeli.berandaPembeli)
-            back.place(x=10, y=20, anchor=W)
-                       
+            List = [A]           
     elif(searchBy == "Kategori"):
         #Key == "KategoriA"
-        List = [A,B,C] 
-
-        #Button : Back
-        back = Button(berandaframe, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=KategoriProduk.kategoriProduk)
-        back.place(x=10, y=20, anchor=W) 
+        List = [A,B,C]  
         
     x_ = 0
     y_ = 0
@@ -55,7 +45,7 @@ def showProduct(searchBy, Key):
             img = img.resize((130,95), Image.ANTIALIAS)
             img = ImageTk.PhotoImage(img)
             panel = Label(frame1, image=img)
-            panel.place(x=10,y=0)
+            panel.place(x=10,y=10)
             panel.img=img
 
             #Nama
