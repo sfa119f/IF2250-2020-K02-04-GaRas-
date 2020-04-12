@@ -9,24 +9,11 @@ def UpdateStok(a, b):
             database="YYY"
         )
         mycursor = mydb.cursor()
-        myc = mydb.cursor()
-
-        sql = "Select * from produk where nama = %s"
-        val = (a, )
-
-        mycursor.execute(sql, val)
-
-        result = mycursor.fetchall()
-
-        temp = result[a][3]
-        print (temp)
-
-        temp = temp-b
 
         sql1 = "Update produk set stok = %s where nama = %s"
-        val1 = (temp, a)
+        val1 = (b, a)
 
-        myc.execute(sql1, val1)
+        mycursor.execute(sql1, val1)
         mydb.commit()
         print("Berhasil mengubah stok produk!")
     except mysql.connector.Error as e:
