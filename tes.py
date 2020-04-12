@@ -18,7 +18,7 @@ def UpdateStok(a, b):
 
         result = mycursor.fetchall()
 
-        temp = result[a][3]
+        temp = result[0][3]
         print (temp)
 
         temp = temp-b
@@ -50,7 +50,7 @@ def UpdateSpek(a, b):
     except mysql.connector.Error as e:
         print("Gagal mengubah spek produk : {}".format(e))
 
-def UpdateHarga(a, b):
+def Menjual(a, b, c, d, e, f):
     try:
         mydb = mysql.connector.connect(
             host="127.0.0.1",
@@ -59,50 +59,14 @@ def UpdateHarga(a, b):
             database="GaRas"
         )
         myc = mydb.cursor()
-        sql1 = "Update produk set harga = %s where nama = %s"
-        val1 = (b, a)
+        sql = "Insert into produk values (null, %s, %s, %s, %s, %s, %s)"
+        val = (a, b, c, d, e, f)
 
-        myc.execute(sql1, val1)
+        myc.execute(sql, val)
         mydb.commit()
-        print("Berhasil mengubah harga produk!")
+        print("Berhasil menambah produk!")
     except mysql.connector.Error as e:
-        print("Gagal mengubah harga produk : {}".format(e))
-
-def UpdateNama(a, b):
-    try:
-        mydb = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            passwd="1234",
-            database="GaRas"
-        )
-        myc = mydb.cursor()
-        sql1 = "Update produk set nama = %s where nama = %s"
-        val1 = (b, a)
-
-        myc.execute(sql1, val1)
-        mydb.commit()
-        print("Berhasil mengubah nama produk!")
-    except mysql.connector.Error as e:
-        print("Gagal mengubah nama produk : {}".format(e))
-
-def UpdateBerat(a, b):
-    try:
-        mydb = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            passwd="1234",
-            database="GaRas"
-        )
-        myc = mydb.cursor()
-        sql1 = "Update produk set berat = %s where nama = %s"
-        val1 = (b, a)
-
-        myc.execute(sql1, val1)
-        mydb.commit()
-        print("Berhasil mengubah berat produk!")
-    except mysql.connector.Error as e:
-        print("Gagal mengubah berat produk : {}".format(e))
+        print("Gagal menambah produk : {}".format(e))
 
 def SearchProduk(a):
     try:
@@ -117,19 +81,17 @@ def SearchProduk(a):
         val = ('%' + a + '%', )
         mycursor.execute(sql, val)
         result = mycursor.fetchall()
-        a = 0
-        for x in result:
-            print("Nama produk :", result[a][1])
-            print("Harga produk :", result[a][2])
-            print("Stok produk :", result[a][3])
-            print("Spesifikasi produk :", result[a][4])
-            #print("Kategori produk : ", result[a][5])
+        for x in range(len(result)):
+            print("Nama produk : ", result[x][1])
+            print("Harga produk : ", result[x][2])
+            print("Stok produk : ", result[x][3])
+            print("Spesifikasi produk : ", result[x][4])
+            print("Kategori produk : ", result[x][5])
             print()
-            a+=1
     except mysql.connector.Error as e:
         print("Gagal mencari produk : {}".format(e))
 
-"""def SearchKategori(a):
+def SearchKategori(a):
     try:
         mydb = mysql.connector.connect(
             host="127.0.0.1",
@@ -142,25 +104,24 @@ def SearchProduk(a):
         val = (a, )
         mycursor.execute(sql, val)
         result = mycursor.fetchall()
-        a = 0
-        for x in result:
-            print("Nama produk : ", result[a][1])
-            print("Harga produk : ", result[a][2])
-            print("Stok produk : ", result[a][3])
-            print("Spesifikasi produk : ", result[a][4])
-            #print("Kategori produk : ", result[a][5])
+        for x in range(len(result)):
+            print("Nama produk : ", result[x][1])
+            print("Harga produk : ", result[x][2])
+            print("Stok produk : ", result[x][3])
+            print("Spesifikasi produk : ", result[x][4])
+            print("Kategori produk : ", result[x][5])
             print()
-            a+=1
     except mysql.connector.Error as e:
-        print("Gagal mencari produk : {}".format(e))"""
+        print("Gagal mencari produk : {}".format(e))
+
+
 
 
 print("1. Mengupdate Stok")
 print("2. Mengupdate Spek")
 print("3. Mencari produk")
-print("4. Mengupdate Harga")
-print("5. Mengupdate Berat")
-print("6. Mengupdate Nama")
+print("4. Mencari produk berdasarkan kategori")
+print("5. Menambahkan produk yang dijual")
 x = int(input("Masukkan pilihan menu : "))
 if (x == 1):
     a = str(input("Masukkan nama produk : "))
@@ -168,7 +129,7 @@ if (x == 1):
     UpdateStok(a, b)
 elif (x==2):
     a = str(input("Masukkan nama produk : "))
-    b = str(input("Masukkan spek baru produk : "))
+    b = str(input("Masukkan spek produk : "))
     UpdateSpek(a, b)
 elif (x==3):
     a = str(input("Masukkan nama produk : "))
@@ -176,14 +137,14 @@ elif (x==3):
     print()
     SearchProduk(a)
 elif (x==4):
-    a = str(input("Masukkan nama produk : "))
-    b = str(input("Masukkan harga baru produk : "))
-    UpdateHarga(a,b)
+    a = str(input("Masukkan kategori produk : "))
+    print("Hasil pencarian : ")
+    print()
+    SearchKategori(a)
 elif (x==5):
     a = str(input("Masukkan nama produk : "))
-    b = str(input("Masukkan berat baru produk : "))
-    UpdateBerat(a,b)
-elif (x==6):
-    a = str(input("Masukkan nama produk : "))
-    b = str(input("Masukkan nama baru produk : "))
-    UpdateNama(a,b)
+    b = int(input("Masukkan harga produk : "))
+    c = int(input("Masukkan stok produk : "))
+    d = str(input("Masukkan spesifikasi produk : "))
+    e = str(input("Masukkan kategori produk : "))
+    Menjual(a, b, c, d, e)
