@@ -1,6 +1,6 @@
 from tkinter import *
 import DefVar
-from ModulPembeli import PagePembeli, showProduct
+from ModulPembeli import showProduct, BerandaPembeli
 
 def kategoriProduk():
     frame = Frame(DefVar.root, bg=DefVar.white)
@@ -31,5 +31,5 @@ def kategoriProduk():
     grahita.place(x=150, y=350, anchor=W)
 
     #Button : Back
-    back = Button(frame, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=lambda:PagePembeli.pagePembeli(frame))
+    back = Button(frame, text="Back", font= "Helvetica 8", activebackground=DefVar.redcolor, fg=DefVar.background, bg=DefVar.white, relief=FLAT, command=BerandaPembeli.berandaPembeli)
     back.place(x=10, y=20, anchor=W)
