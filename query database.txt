@@ -26,9 +26,35 @@ insert into kurir values (null,"jnt",9500,"Jalan B No.4 Bandung","Foto/kurir/jnt
 insert into kurir values (null,"tiki",11000,"Jalan C No.3 Bandung","Foto/kurir/tiki.png");
 insert into kurir values (null,"sicepat",12000,"Jalan D No.6 Bandung","Foto/kurir/sicepat.png");
 
-create table pengguna (nama varchar(50),tanggal_lahir date,jenis_kelamin char,email varchar(50),nomor_gawai varchar(12),alamat varchar(100),peranan varchar(10),username varchar(20) unique,password varchar(20),image varchar(100),primary key(username));
+create table pembeli (nama varchar(50),tanggal_lahir date,jenis_kelamin char,email varchar(50),nomor_gawai varchar(12),alamat varchar(100),username varchar(20) unique,password varchar(20),image varchar(100),primary key(username));
 
-insert into pengguna values ("Aang","1995-08-18","P","aang@gmail.com","081223757474","Jalan H No.4","pembeli","aang","pass","Foto/pengguna/aang.png");
-insert into pengguna values ("Katara","1994-05-20","W","katara@gmail.com","081212797914","Jalan H No.5","pembeli","katara","word","Foto/pengguna/katara.png");
-insert into pengguna values ("Sokka","1990-01-01","P","sokka@gmail.com","081123657377","Jalan Z No.2","pembeli","sokka","1234","Foto/pengguna/sokka.png");
-insert into pengguna values ("Toph","1991-11-29","P","toph@gmail.com","082223444474","Jalan G No.5","penjual","toph","password","Foto/pengguna/toph.png");
+insert into pembeli values ("Aang","1995-08-18","P","aang@gmail.com","081223757474","Jalan H No.4","aang","pass","Foto/pengguna/aang.png");
+insert into pembeli values ("Katara","1994-05-20","W","katara@gmail.com","081212797914","Jalan H No.5","katara","word","Foto/pengguna/katara.png");
+
+create table penjual (nama varchar(50),tanggal_lahir date,jenis_kelamin char,email varchar(50),nomor_gawai varchar(12),alamat varchar(100),username varchar(20) unique,password varchar(20),image varchar(100),primary key(username));
+
+insert into penjual values ("Sokka","1990-01-01","P","sokka@gmail.com","081123657377","Jalan Z No.2","sokka","1234","Foto/pengguna/sokka.png");
+insert into penjual values ("Toph","1991-11-29","P","toph@gmail.com","082223444474","Jalan G No.5","toph","password","Foto/pengguna/toph.png");
+
+create table menjual (username varchar(20) not null,id int not null,primary key(id),foreign key (id) references produk(id),foreign key (username) references penjual(username));
+
+insert into menjual values ("toph",1);
+insert into menjual values ("toph",6);
+insert into menjual values ("sokka",8);
+insert into menjual values ("sokka",10);
+
+create table transaksi (
+    id_transaksi int auto_increment unique,
+    pembeli varchar(20) not null,
+    penjual varchar(20) not null,
+    produk int not null,
+    id_kurir int not null,
+    total_biaya int,
+    status varchar(20),
+    primary key(id_transaksi),
+    foreign key (pembeli) references pembeli(username),
+    foreign key (penjual) references penjual(username),
+    foreign key (produk) references produk(id),
+    foreign key (id_kurir) references kurir(id));
+
+insert into transaksi values (null,"aang","sokka",8,1,45000,"Diterima");
