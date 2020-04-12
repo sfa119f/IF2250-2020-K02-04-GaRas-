@@ -1,7 +1,7 @@
 from tkinter import *
 import DefVar
 from PIL import ImageTk,Image
-from ModulPembeli import BayarProduk
+from ModulPembeli import BayarProduk, showProduct
 
 def beliProduk(NamaProduk):
     frame = Frame(DefVar.root, bg=DefVar.white)
@@ -43,7 +43,7 @@ def beliProduk(NamaProduk):
     stock.place(x=x_, y=y_ + 30)
 
     #Label : Harga
-    harga = "Rp. " + str(Produk[2])
+    harga = showProduct.makeRp(str(Produk[2]))
     price = Label(frame, text = harga, bg=DefVar.white, font="Helvetica 12")
     price.place(x=x_, y=y_ + 50)
 
@@ -59,19 +59,13 @@ def beliProduk(NamaProduk):
 
     #Jumlah Pembelian
     stocktxt = Label(frame, text="Jumlah Pembelian", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white)
-    stocktxt.place(x=x_, y=y_ + 180)
+    stocktxt.place(x=x_, y=y_ + 150)
     stock = Spinbox(frame, bd=1, bg=DefVar.white, relief=GROOVE, from_=1, to=Produk[3], width=30)
-    stock.place(x=x_, y=y_ + 200)  
+    stock.place(x=x_, y=y_ + 170)  
 
     #Pilihan Kurir
     kurirText = Label(frame, text="Ekspedisi Pengiriman", font="Helvetica 8", fg=DefVar.text, bg=DefVar.white)
-    kurirText.place(x=x_ + 250, y=y_ + 180)
-
-    #Daftar Kurir
-    menuKurir = Menubutton(frame, text="", relief=GROOVE, bg=DefVar.white, font="Helvetica 8", fg="grey", width=30)
-    menuKurir.place(x=x_ + 250, y=y_ + 200)
-    menuKurir.menu = Menu(menuKurir, tearoff=0)
-    menuKurir["menu"] = menuKurir.menu
+    kurirText.place(x=x_ + 250, y=y_ + 200)
 
     #--------------------------------------------------------
     #listKurir = AllKurir()
@@ -87,42 +81,35 @@ def beliProduk(NamaProduk):
     #listnya dimasukin list
     listKurir = [Kurir1, Kurir2, Kurir3, Kurir4]
     #********************************************************
-    
-    for i in range(len(listKurir)):
-        Kurir = listKurir[i]
-        menuKurir.menu.add_command(label=Kurir[1], command=lambda x=Kurir : showTotal(frame, menuKurir, listKurir, x, Produk, stock))
+    var = StringVar(frame)
+    opKurir = OptionMenu(frame, var, "JNE", "JNT", "SiCepat", "Tiki", command=lambda x=var.get():show(x, frame, listKurir, Produk, stock))
+    opKurir.config(bd=1, bg=DefVar.white, relief=GROOVE, width=25)
+    opKurir.place(x=x_, y=y_ + 220)
 
+def show(value, frame, listKurir, Produk, stock):
+    if(value == ""):
+        value = ""
+    else:
+        if(value == "JNE"):
+            Kurir = listKurir[0]
+        elif(value=="JNT"):
+            Kurir = listKurir[1]
+        elif(value=="SiCepat"):
+            Kurir = listKurir[2]
+        elif(value=="Tiki"):
+            Kurir = listKurir[3]
 
+        #Label : Total Pembayaran
+        totalpembayaran = Label(frame, text = "Total Pembayaran :", bg=DefVar.white, font="Helvetica 10")
+        totalpembayaran.place(x=310, y=370)
 
-def showTotal(frame, menuKurir, listKurir, Kurir, Produk, stock):
-    menuKurir.destroy()
-    jmlBarang = int(stock.get())
+        jmlBarang = int(stock.get())
+        #-----------------------------------------------------------------------------------------------------
+        #total = "Rp. " + str(HitungHarga(Produk[1], jmlBarang, Kurir[2], Produk[4]))
+        #-----------------------------------------------------------------------------------------------------
+        total = showProduct.makeRp(str(Produk[2]*jmlBarang + Kurir[2]*Produk[4]))    
+        totalharga = Label(frame, text = total, bg=DefVar.white, font="Helvetica 15 bold", padx=20)
+        totalharga.place(x=290, y=390)
 
-    #Ganti text menubutton
-    menuKurir = Menubutton(frame, text=Kurir[1], relief=GROOVE, bg=DefVar.white, font="Helvetica 8", fg="grey", width=30)
-    menuKurir.place(x=270, y=400)
-    menuKurir.menu = Menu(menuKurir, tearoff=0)
-    menuKurir["menu"] = menuKurir.menu
-
-    for i in range(len(listKurir)):
-        Kurir = listKurir[i]
-        menuKurir.menu.add_command(label=Kurir[1], command=lambda x=Kurir : showTotal(frame, menuKurir, listKurir, x, Produk, stock))
-
-    #Label : Total Pembayaran
-    totalpembayaran = Label(frame, text = "Total Pembayaran : ", bg=DefVar.white, font="Helvetica 10")
-    totalpembayaran.place(x=20, y=430)
-
-    #-----------------------------------------------------------------------------------------------------
-    #total = "Rp. " + str(HitungHarga(Produk[1], jmlBarang, Kurir[2], Produk[4]))
-    #-----------------------------------------------------------------------------------------------------
-
-    #*****************************************************************************************************
-    #Label : Rp.
-    total = "Rp. " + str(Produk[2]*jmlBarang + Kurir[2]*Produk[4])    
-    #*****************************************************************************************************
-    totalharga = Label(frame, text = total, bg=DefVar.white, font="Helvetica 12 bold", padx=20)
-    totalharga.place(x=20, y=450)
-
-    #Button : Bayar
-    Bayar = Button(frame, text="Bayar", font=DefVar.font, activebackground=DefVar.white, activeforeground="#000000", fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda:BayarProduk.bayarProduk(Produk, Kurir))
-    Bayar.place(x=230, y=500, anchor=W)
+        Bayar = Button(frame, text="Bayar", font=DefVar.font, activebackground=DefVar.white, activeforeground="#000000", fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda:BayarProduk.bayarProduk(Produk, Kurir))
+        Bayar.place(x=230, y=500, anchor=W)

@@ -1,7 +1,7 @@
 from tkinter import *
 import DefVar
 from PIL import ImageTk,Image
-from ModulPembeli import BeliProduk
+from ModulPembeli import BeliProduk, PagePembeli
 
 def showProduct(page, searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
@@ -86,7 +86,7 @@ def showProduct(page, searchBy, Key):
             nama.place(x=10, y=100)
             
             #Harga
-            hargajual = str("Rp." + str(Produk[2]))
+            hargajual = makeRp(str(Produk[2]))
             harga = Label(frame1, text = hargajual, bg=DefVar.white, font="Helvetica 8")
             harga.place(x=10, y=115)
 
@@ -114,3 +114,25 @@ def showProduct(page, searchBy, Key):
 def drawPageLabel(page):
     pageLabel = Label(DefVar.root, text="page "+str(page), bg=DefVar.white, font="Helvetica 8")
     pageLabel.place(x=480, y=570)
+
+def makeRp(uang):
+    hasil = "Rp. "
+    if(len(str(uang))%3 == 0):
+        i = 0
+    else:
+        if(len(str(uang))%3 == 1):
+            hasil += str(uang[0]) + "."
+            i = 1
+        elif(len(str(uang))%3 == 2):
+            hasil += str(uang[0]) + str(uang[1]) + "."
+            i = 2            
+
+    while(i < len(str(uang))):
+        a = 0
+        while(a < 3 and i < len(str(uang))):
+            hasil += str(uang[i])
+            i += 1
+            a += 1
+        if(i < len(str(uang))): hasil += "."
+        a = 0
+    return hasil
