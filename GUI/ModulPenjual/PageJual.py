@@ -17,17 +17,19 @@ def jualProduk():
     nama = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=50)
     nama.place(x=x_entry, y=y_txt, anchor=W)
 
-
     #Kategori
     kategoritxt = Label(jualframe, text="Kategori", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
     kategoritxt.place(x=x_txt, y=y_txt+50, anchor=W)
-    kategori = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=50)
+    var = StringVar(jualframe)
+    var.set("")
+    kategori = OptionMenu(jualframe, var, "Tuna Netra", "Tuna Wicara", "Tuna Rungu", "Tuna Daksa", "Tuna Grahita")
+    kategori.config(bd=1, bg=DefVar.white, relief=GROOVE, width=20)
     kategori.place(x=x_entry, y=y_txt+50, anchor=W)
     
     #Harga
-    hargatxt = Label(jualframe, text="Harga", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
+    hargatxt = Label(jualframe, text="Harga (Rp)", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
     hargatxt.place(x=x_txt, y=y_txt+100, anchor=W)
-    harga = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=50)
+    harga = Spinbox(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, from_=100, to=100000000000, width=24)
     harga.place(x=x_entry, y=y_txt+100, anchor=W)
 
     #Jumlah Barang
@@ -37,9 +39,9 @@ def jualProduk():
     stock.place(x=x_entry, y=y_txt+150, anchor=W)
 
     #Berat
-    berattxt = Label(jualframe, text="Berat", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
-    berattxt.place(x=x_txt+250, y=y_txt+150, anchor=W)
-    berat = Entry(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, width=15)
+    berattxt = Label(jualframe, text="Berat (kg)", font=DefVar.font, fg=DefVar.text, bg=DefVar.white)
+    berattxt.place(x=x_txt+240, y=y_txt+150, anchor=W)
+    berat = Spinbox(jualframe, bd=1, bg=DefVar.white, relief=GROOVE, from_=0, to=1000, width=12, increment=0.1)
     berat.place(x=x_entry+210, y=y_txt+150, anchor=W)
 
     #Spesifikasi
