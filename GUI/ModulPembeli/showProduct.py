@@ -1,7 +1,7 @@
 from tkinter import *
 import DefVar
 from PIL import ImageTk,Image
-#from ModulPembeli import KategoriProduk, BerandaPembeli
+from ModulPembeli import BeliProduk
 
 def showProduct(page, searchBy, Key):
     berandaframe = Frame(DefVar.root, bg=DefVar.white)
@@ -76,7 +76,7 @@ def showProduct(page, searchBy, Key):
             harga.place(x=10, y=115)
 
             #Button Beli
-            jual = Button(frame1, text="Beli", font= "Helvetica 8", activebackground=DefVar.white, activeforeground=DefVar.text, fg=DefVar.white, bg=DefVar.redcolor, relief=FLAT)
+            jual = Button(frame1, text="Beli", font= "Helvetica 8", activebackground=DefVar.white, activeforeground=DefVar.text, fg=DefVar.white, bg=DefVar.redcolor, relief=FLAT, command=lambda a = Produk[0] : BeliProduk.beliProduk(a))
             jual.place(x=10, y=150, anchor=W)
 
             x_ += 200
