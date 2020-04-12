@@ -3,21 +3,21 @@ create table produk (id int auto_increment unique, nama varchar(50),harga int, s
 insert into produk values (null,"tongkat lipat",30000,100,0.8,"tongkat untuk tuna netra dan bisa dilipat","Foto/produk/tongkat.png","tuna netra");
 insert into produk values (null,"alquran braille",200000,30,0.5,"alquran braille untuk tuna netra","Foto/produk/alquran.png","tuna netra");
 insert into produk values (null,"kacamata hitam",150000,50,0.2,"kacamata hitam untuk tuna netra","Foto/produk/kacamata.png","tuna netra");
-insert into produk values (null,"alat tulis tunanetra",10000,150,0.3,"alat tulis tunanetra untuk tuna netra","Foto/produk/alat tulis.png","tuna netra");
-insert into produk values (null,"alat bantu belajar tunanetra",50000,10,0.2,"media belajar matematika","Foto/produk/alat belajar.jpg","tuna netra");
+insert into produk values (null,"alat tulis tunanetra",10000,150,0.3,"alat tulis tunanetra untuk tuna netra","Foto/produk/alattulis.png","tuna netra");
+insert into produk values (null,"alat bantu belajar tunanetra",50000,10,0.2,"media belajar matematika","Foto/produk/alatbelajar.jpg","tuna netra");
 
-insert into produk values (null,"alat bantu dengar",70000,25,0.1,"alat bantu pendengaran","Foto/produk/alat dengar.png","tuna rungu");
+insert into produk values (null,"alat bantu dengar",70000,25,0.1,"alat bantu pendengaran","Foto/produk/alatdengar.png","tuna rungu");
 insert into produk values (null,"masker transparan",15000,80,0.05,"masker transparan untuk tuna rungu","Foto/produk/masker.jpg","tuna rungu");
 
 insert into produk values (null,"buku bahasa isyarat",35000,250,0.5,"buku untuk belajar bahasa isyarat","Foto/produk/buku.jpg","tuna wicara");
 insert into produk values (null,"translator",1000000,10,0.4,"alat penerjemah bahasa isyarat","Foto/produk/translator.jpg","tuna wicara");
 
-insert into produk values (null,"kursi roda",350000,60,5.0,"kursi roda untuk tuna daksa","Foto/produk/kursi roda.png","tuna daksa");
-insert into produk values (null,"kaki palsu",75000,70,2.0,"alat bantu jalan","Foto/produk/kaki palsu.png","tuna daksa");
+insert into produk values (null,"kursi roda",350000,60,5.0,"kursi roda untuk tuna daksa","Foto/produk/kursiroda.png","tuna daksa");
+insert into produk values (null,"kaki palsu",75000,70,2.0,"alat bantu jalan","Foto/produk/kakipalsu.png","tuna daksa");
 insert into produk values (null,"orthotic",95000,45,0.4,"alat bantu untuk tuna daksa","Foto/produk/orthotic.png","tuna daksa");
 insert into produk values (null,"splint",105000,35,0.4,"alat bantu untuk tuna daksa","Foto/produk/splint.png","tuna daksa");
 
-insert into produk values (null,"alat peraga",105000,35,0.3,"alat peraga untuk tuna grahita","Foto/produk/alat peraga.jpg","tuna grahita");
+insert into produk values (null,"alat peraga",105000,35,0.3,"alat peraga untuk tuna grahita","Foto/produk/alatperaga.jpg","tuna grahita");
 
 create table kurir (id int auto_increment unique, nama varchar(50),harga int,alamat varchar(300),image varchar(100),primary key (id));
 
