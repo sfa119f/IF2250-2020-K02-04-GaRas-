@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
+from pathlib import Path
 import DefVar
 from ModulFungsi.tes import *
 from ModulPenjual import BerandaPenjual,SimpanProduk
@@ -75,10 +76,17 @@ def jualProduk():
     back.place(x=10, y=20, anchor=W)
 
 def browseFile(picture):
-    img_name = filedialog.askopenfilename(initialdir = "data/", title = "Select A File", filetypes =(("jpeg files","*.jpg"),("png files","*.png")) )
-    img_name = img_name.split("data/")[-1]
+    img_name = filedialog.askopenfilename(title = "Select A File", filetypes =(("jpeg files","*.jpg"),("png files","*.png")) )
+    p = Path(img_name)
+
+    list = p.parts
+
+    hasil = list[len(list)-3]
+    hasil += "/" + list[len(list)-2]
+    hasil += "/" + list[len(list)-1]
+
     picture.delete(0,END)
-    picture.insert(0,img_name)
+    picture.insert(0,hasil)
 
 def setEntry(nama, harga, stock, berat, spesifikasi, gambar, Produk):
     Produk[1] = nama
