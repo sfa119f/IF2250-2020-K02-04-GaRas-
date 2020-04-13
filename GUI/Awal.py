@@ -1,6 +1,8 @@
 from tkinter import *
 import DefVar
 import DaftarForm
+from ModulFungsi import tes
+import PageLogin
 
 DefVar.root.title("GaRas")
 DefVar.root.geometry("800x600+200+50")
@@ -24,7 +26,7 @@ vPassword = StringVar()
 pw = Entry(loginframe, bd=1, bg=DefVar.white, relief=GROOVE, width=40, textvariable=vPassword, show="*")
 pw.place(x=x_+83, y=y_+175)
 
-signin = Button(loginframe, text="Masuk", font=DefVar.font, activebackground=DefVar.background, fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10)
+signin = Button(loginframe, text="Masuk", font=DefVar.font, activebackground=DefVar.background, fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda: [tes.SetDB(vPassword.get(), vDatabase.get()), PageLogin.start(loginframe)])
 signin.place(x=x_+140, y=y_+250)
 
 signup = Label(loginframe, text="Belum punya database?", font="Helvetica 8", bg=DefVar.white, fg=DefVar.text)

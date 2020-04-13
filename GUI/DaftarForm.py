@@ -1,5 +1,7 @@
 from tkinter import *
 import DefVar
+from ModulFungsi import tes
+import PageLogin
 
 def daftarForm():
     frame = Frame(DefVar.root, bg=DefVar.white)
@@ -21,7 +23,7 @@ def daftarForm():
     pw = Entry(frame, bd=1, bg=DefVar.white, relief=GROOVE, width=40, textvariable=vPassword, show="*")
     pw.place(x=x_+83, y=y_+175)
 
-    signin = Button(frame, text="Daftar", font=DefVar.font, activebackground=DefVar.background, fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10)
+    signin = Button(frame, text="Daftar", font=DefVar.font, activebackground=DefVar.background, fg=DefVar.white, bg=DefVar.redcolor, padx=15, pady=5, relief=FLAT, width=10, command=lambda: [tes.CreateDB(vPassword.get(), vDatabase.get()), PageLogin.start(frame)])
     signin.place(x=x_+140, y=y_+250)
 
     #back

@@ -5,7 +5,7 @@ from ModulPembeli import PagePembeli
 
 def start(frame):
     frame.destroy()
- 
+
     loginframe = Frame(DefVar.root, bg=DefVar.background)
     loginframe.place(x=0,y=0,height=600, width=800)
 

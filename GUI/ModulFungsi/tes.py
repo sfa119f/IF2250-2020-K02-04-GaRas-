@@ -8,19 +8,22 @@ def SetDB(user, data):
     global Db
     Pass = user
     Db = data
+    UseDB()
 
 def CreateDB(user, data):
     try:
-        SetDB(user, data)
+        global Pass
+        global Db
+        Pass = user
+        Db = data
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
             passwd=Pass
         )
         mycursor = mydb.cursor()
-        sql = "Create Database %s"
-        val = (Db, )
-        mycursor.execute(sql, val)
+        sql = "Create Database " + Db
+        mycursor.execute(sql)
         UseDB()
     except mysql.connector.Error as e:
         print("Gagal menambah basis data : {}".format(e))
@@ -36,9 +39,9 @@ def UseDB():
             database=Db
         )
         mycursor = mydb.cursor()
-        f = open("../../Garas.sql")
+        f = open("../Garas.sql")
         sql = f.read()
-        mycursor.execute(sql, multi=True):
+        mycursor.execute(sql, multi=True)
         
     except mysql.connector.Error as e:
         print("Gagal menggunakan basis data : {}".format(e))
@@ -333,4 +336,3 @@ def AllJual(username):
         return result
     except mysql.connector.Error as e:
         print("Gagal mencari produk : {}".format(e))
-
