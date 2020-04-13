@@ -1,12 +1,58 @@
 import mysql.connector
 
-def UpdateStok(a, b):
+Pass = ""
+Db = ""
+
+def SetDB(user, data):
+    global Pass
+    global Db
+    Pass = user
+    Db = data
+
+def CreateDB(user, data):
     try:
+        SetDB(user, data)
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass
+        )
+        mycursor = mydb.cursor()
+        sql = "Create Database %s"
+        val = (Db, )
+        mycursor.execute(sql, val)
+        UseDB()
+    except mysql.connector.Error as e:
+        print("Gagal menambah basis data : {}".format(e))
+
+def UseDB():
+    try:
+        global Pass
+        global Db
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd=Pass,
+            database=Db
+        )
+        mycursor = mydb.cursor()
+        f = open("../../Garas.sql")
+        sql = f.read()
+        mycursor.execute(sql, multi=True):
+        
+    except mysql.connector.Error as e:
+        print("Gagal menggunakan basis data : {}".format(e))
+        
+
+def UpdateStok(a, b):
+    try:
+        global Pass
+        global Db
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
 
@@ -21,11 +67,13 @@ def UpdateStok(a, b):
 
 def UpdateSpek(a, b):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         myc = mydb.cursor()
         sql1 = "Update produk set spek = %s where nama = %s"
@@ -39,11 +87,13 @@ def UpdateSpek(a, b):
 
 def UpdateHarga(a, b):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         myc = mydb.cursor()
         sql1 = "Update produk set harga = %s where nama = %s"
@@ -57,11 +107,13 @@ def UpdateHarga(a, b):
 
 def UpdateNama(a, b):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         myc = mydb.cursor()
         sql1 = "Update produk set nama = %s where nama = %s"
@@ -75,11 +127,13 @@ def UpdateNama(a, b):
 
 def UpdateBerat(a, b):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         myc = mydb.cursor()
         sql1 = "Update produk set berat = %s where nama = %s"
@@ -93,11 +147,13 @@ def UpdateBerat(a, b):
 
 def Menjual(a, b, c, d, e, f, g, h):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         myc = mydb.cursor()
         sql = "Insert into produk values (null, %s, %s, %s, %s, %s, %s, %s)"
@@ -119,11 +175,13 @@ def Menjual(a, b, c, d, e, f, g, h):
 
 def HitungHarga(namaprod, jum, namakurir, berat):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
         sql = "select * from kurir where nama = %s"
@@ -143,11 +201,13 @@ def HitungHarga(namaprod, jum, namakurir, berat):
 
 def Membeli(a, b, namapem, namakurir):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
         sql = "Select * from produk where nama = %s"
@@ -185,11 +245,13 @@ def Membeli(a, b, namapem, namakurir):
 
 def SearchProduk(a):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
         sql = "Select * from produk where nama like %s"
@@ -202,11 +264,13 @@ def SearchProduk(a):
 
 def SearchKategori(a):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
         sql = "Select * from produk where kategori like %s"
@@ -219,11 +283,13 @@ def SearchKategori(a):
 
 def AllKurir():
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
         mycursor.execute("Select * from kurir")
@@ -234,11 +300,13 @@ def AllKurir():
 
 def AllProduk():
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
         mycursor.execute("Select * from produk")
@@ -249,11 +317,13 @@ def AllProduk():
 
 def AllJual(username):
     try:
+        global Pass
+        global Db
         mydb = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
-            passwd="XXX",
-            database="YYY"
+            passwd=Pass,
+            database=Db
         )
         mycursor = mydb.cursor()
         sql = "Select * from produk where id in (select id from menjual where username = %s)"
