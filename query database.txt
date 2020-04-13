@@ -38,10 +38,20 @@ insert into penjual values ("Toph","1991-11-29","P","toph@gmail.com","0822234444
 
 create table menjual (username varchar(20) not null,id int not null,primary key(id),foreign key (id) references produk(id),foreign key (username) references penjual(username));
 
-insert into menjual values ("toph",1);
-insert into menjual values ("toph",6);
+insert into menjual values ("sokka",1);
+insert into menjual values ("sokka",2);
+insert into menjual values ("sokka",3);
+insert into menjual values ("sokka",4);
+insert into menjual values ("sokka",5);
+insert into menjual values ("sokka",6);
+insert into menjual values ("sokka",7);
 insert into menjual values ("sokka",8);
+insert into menjual values ("sokka",9);
 insert into menjual values ("sokka",10);
+insert into menjual values ("sokka",11);
+insert into menjual values ("sokka",12);
+insert into menjual values ("sokka",13);
+insert into menjual values ("sokka",14);
 
 create table transaksi (
     id_transaksi int auto_increment unique,

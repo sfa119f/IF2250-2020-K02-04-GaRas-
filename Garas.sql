@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: garas
+-- Host: localhost    Database: rpl
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -66,7 +66,7 @@ CREATE TABLE `menjual` (
 
 LOCK TABLES `menjual` WRITE;
 /*!40000 ALTER TABLE `menjual` DISABLE KEYS */;
-INSERT INTO `menjual` VALUES ('sokka',8),('sokka',10),('toph',1),('toph',6);
+INSERT INTO `menjual` VALUES ('sokka',1),('sokka',2),('sokka',3),('sokka',4),('sokka',5),('sokka',6),('sokka',7),('sokka',8),('sokka',9),('sokka',10),('sokka',11),('sokka',12),('sokka',13),('sokka',14);
 /*!40000 ALTER TABLE `menjual` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-12 14:18:17
+-- Dump completed on 2020-04-13 13:56:08
