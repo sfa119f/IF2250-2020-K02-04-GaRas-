@@ -14,4 +14,9 @@ stages:
 pylint:
   stage: build
   script:
-  - pylint -d C0301 GUI/GaRas.py
+  - pylint -d C0301 GUI/ModulFungsi/tes.py
+
+pytest:
+  stage: test
+  script:
+  -pytest GUI/testing.py
