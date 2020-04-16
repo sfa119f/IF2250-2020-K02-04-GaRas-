@@ -19,4 +19,4 @@ pylint:
 pytest:
   stage: test
   script:
-  -pytest GUI/testing.py
+  - cd GUI/;pytest testing.py
