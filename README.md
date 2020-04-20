@@ -30,7 +30,7 @@ GUI/python Testing.py
 ```
 pylint: 
 ```
-GUI/ModulFungsi/pylint tes.py result Your code has been rated at 3.99/10 
+GUI/ModulFungsi/pylint tes.py 
 ```
 result: Your code has been rated at 3.99/10
 
