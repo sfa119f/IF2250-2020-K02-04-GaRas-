@@ -77,6 +77,7 @@ Dalam folder doc
 
 * [Python](https://www.python.org/) - Bahasa pemrograman
 * [Tkinter](https://wiki.python.org/moin/TkInter) - User Interface
+* [MySQL](https://www.mysql.com/) - Basis Data
 
 ## Authors
 * **Arif Rahman Amrul Ghani** - *13518023*
