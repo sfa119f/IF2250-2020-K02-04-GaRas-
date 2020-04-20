@@ -42,7 +42,17 @@ Berikut adalah struktur folder dari proyek ini
 * Modul Pencarian Kategori - 13518095 Syarifuddin Fakhri Al Husaini
 
 ## Capture Modul
-Dalam folder doc
+* Modul Menjual
+![datei](doc/Modul Menjual.png)
+
+* Modul Membeli
+![datei](doc/Modul Membeli.png)
+
+* Modul Pencarian Keyword
+![datei](doc/Modul Pencarian Kata Kunci.png)
+
+* Modul Pencarian Kategori
+![datei](doc/Modul Pencarian Kategori.png)
 
 ## Basis Data
 
