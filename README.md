@@ -24,8 +24,15 @@ GUI/python GaRas.py
 
 ## Unit Testing
 
-* pytest : GUI/python Testing.py
-* pylint: GUI/ModulFungsi/pylint tes.py result Your code has been rated at 3.99/10 
+pytest :
+```
+GUI/python Testing.py
+```
+pylint: 
+```
+GUI/ModulFungsi/pylint tes.py result Your code has been rated at 3.99/10 
+```
+result: Your code has been rated at 3.99/10
 
 ## Project Structure
 Berikut adalah struktur folder dari proyek ini
@@ -36,12 +43,14 @@ Berikut adalah struktur folder dari proyek ini
 ```
 ## Daftar Modul
 
-* Modul Menjual - 13518023 Arif Rahman Amrul Ghani
-* Modul Membeli - 13518026 Faris Fadhilah
-* Modul Pencarian Keyword - 13518074 Iqbal Naufal
-* Modul Pencarian Kategori - 13518095 Syarifuddin Fakhri Al Husaini
+* **Modul Menjual** - 13518023 Arif Rahman Amrul Ghani
+* **Modul Membeli** - 13518026 Faris Fadhilah
+* **Modul Pencarian Keyword** - 13518074 Iqbal Naufal
+* **Modul Pencarian Kategori** - 13518095 Syarifuddin Fakhri Al Husaini
 
 ## Capture Modul
+
+Dalam folder doc
 * Modul Menjual
 ![datei](doc/Modul Menjual.png)
 
@@ -54,14 +63,15 @@ Berikut adalah struktur folder dari proyek ini
 * Modul Pencarian Kategori
 ![datei](doc/Modul Pencarian Kategori.png)
 
+
 ## Basis Data
 
-* Tabel Kurir (id,nama,harga,alamat,image)
-* Tabel Menjual (username,id)
-* Tabel Pembeli (nama,tanggal_lahir,jenis_kelamin,email,nomor_gawai,alamat,username,password,image)
-* Tabel Penjual (nama,tanggal_lahir,jenis_kelamin,email,nomor_gawai,alamat,username,password,image)
-* Tabel Produksuk (id,nama,harga,stok,berat,spek,image,kategori)
-* Tabel Transaksi (id_transaksi,pembeli,penjual,produk,id_kurir,total_biaya,status)
+* **Tabel Kurir** (id, nama, harga, alamat, image)
+* **Tabel Menjual** (username, id)
+* **Tabel Pembeli** (nama, tanggal_lahir, jenis_kelamin, email, nomor_gawai, alamat, username, password, image)
+* **Tabel Penjual** (nama, tanggal_lahir, jenis_kelamin, email, nomor_gawai, alamat, username, password, image)
+* **Tabel Produk** (id, nama, harga, stok, berat, spek, image, kategori)
+* **Tabel Transaksi** (id_transaksi, pembeli, penjual, produk, id_kurir, total_biaya, status)
 
 ## Built With
 
